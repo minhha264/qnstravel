@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - QNSTravel</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        
+        /* Chat Widget Animations */
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .chat-open {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        qns: {
+                            navy: '#0f172a',
+                            red: '#dc2626',
+                            orange: '#f97316',
+                            gold: '#fbbf24'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 relative">
+
+    <!-- HEADER (Đồng bộ) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="bg-qns-navy text-white text-xs py-2 hidden md:block">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <span><i class="fas fa-envelope mr-1"></i> hanhship1974@gmail.com</span>
+                    <span><i class="fas fa-phone mr-1"></i> 0904.259.591</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-qns-gold" data-i18n="b2b_partner">B2B Partner</a>
+                    <a href="#" class="hover:text-qns-gold" data-i18n="agent_login">Đại lý đăng nhập</a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="text-3xl text-qns-navy group-hover:text-qns-orange transition-colors duration-300">
+                        <i class="fas fa-anchor"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-qns-navy leading-none">QNSTravel</h1>
+                        <p class="text-xs text-gray-500 tracking-wider">MEMBER OF QN SHIPCORP</p>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex space-x-6 font-medium text-gray-700">
+                    <a href="index.html" class="hover:text-qns-navy transition" data-i18n="home">Trang chủ</a>
+                    <a href="outbound-tours.html" class="hover:text-qns-navy transition" data-i18n="outbound_menu">Du lịch Trung Quốc</a>
+                    <a href="inbound-tours.html" class="hover:text-qns-navy transition" data-i18n="inbound_menu">Du lịch Việt Nam</a>
+                    <a href="visa-services.html" class="hover:text-qns-navy transition" data-i18n="visa_menu">Dịch vụ Visa</a>
+                    <a href="about.html" class="hover:text-qns-navy transition" data-i18n="about_menu">Về chúng tôi</a>
+                    <a href="contact.html" class="text-qns-red font-bold transition" data-i18n="contact_menu">Liên hệ</a>
+                </nav>
+                <div class="hidden md:flex items-center space-x-4">
+                     <div class="flex items-center border rounded px-2 py-1 space-x-2">
+                        <img src="https://flagcdn.com/w20/vn.png" alt="VN" class="cursor-pointer opacity-100 hover:opacity-80" onclick="switchLanguage('vn')">
+                        <span class="text-gray-300">|</span>
+                        <img src="https://flagcdn.com/w20/cn.png" alt="CN" class="cursor-pointer opacity-50 hover:opacity-100" onclick="switchLanguage('cn')">
+                    </div>
+                    <a href="tel:0904259591" class="bg-qns-red text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg animate-pulse">
+                        <i class="fas fa-phone-alt mr-2"></i> 0904.259.591
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden text-2xl text-qns-navy"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="flex flex-col p-4 space-y-3 font-medium">
+                <a href="index.html" data-i18n="home">Trang chủ</a>
+                <a href="outbound-tours.html" data-i18n="outbound_menu">Du lịch Trung Quốc</a>
+                <a href="inbound-tours.html" data-i18n="inbound_menu">Du lịch Việt Nam</a>
+                <a href="visa-services.html" data-i18n="visa_menu">Dịch vụ Visa</a>
+                <a href="about.html" data-i18n="about_menu">Về chúng tôi</a>
+                <a href="contact.html" class="text-qns-red" data-i18n="contact_menu">Liên hệ</a>
+                <div class="border-t pt-3 flex items-center justify-between">
+                    <span data-i18n="language">Ngôn ngữ:</span>
+                    <div class="flex space-x-3">
+                        <img src="https://flagcdn.com/w20/vn.png" alt="VN" onclick="switchLanguage('vn')">
+                        <img src="https://flagcdn.com/w20/cn.png" alt="CN" onclick="switchLanguage('cn')">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="bg-gray-100 py-3 border-b">
+        <div class="container mx-auto px-4 text-sm text-gray-500">
+            <a href="index.html" class="hover:text-qns-navy" data-i18n="home">Trang chủ</a> 
+            <i class="fas fa-chevron-right mx-2 text-xs"></i> 
+            <span class="text-qns-red font-medium" data-i18n="contact_menu">Liên hệ</span>
+        </div>
+    </div>
+
+    <!-- PAGE HEADER BANNER -->
+    <div class="relative h-[250px] bg-cover bg-center flex items-center justify-center text-white" style="background-image: url('bh.webp');">
+        <div class="absolute inset-0 bg-qns-navy bg-opacity-70"></div>
+        <div class="relative z-10 text-center container mx-auto px-4">
+            <h1 class="text-3xl md:text-5xl font-bold mb-3" data-i18n="contact_page_title">Liên Hệ QNSTravel</h1>
+            <p class="text-lg text-gray-200" data-i18n="contact_page_subtitle">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn 24/7</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="py-12 md:py-20">
+        <div class="container mx-auto px-4 max-w-6xl">
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <!-- LEFT: CONTACT INFO & MAP -->
+                <div class="w-full lg:w-1/2 space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-qns-navy mb-6" data-i18n="contact_info_title">Thông Tin Liên Hệ</h2>
+                        
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-50 text-qns-navy rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800" data-i18n="contact_address_label">Trụ sở chính (Chi nhánh Móng Cái):</h4>
+                                    <p class="text-gray-600 text-sm mt-1" data-i18n="address_full">Số 25 Đường Hùng Vương, Phường Móng Cái 1, TP. Móng Cái, Tỉnh Quảng Ninh, Việt Nam</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-red-50 text-qns-red rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800" data-i18n="contact_phone_label">Hotline / Zalo / WeChat:</h4>
+                                    <a href="tel:0904259591" class="text-qns-red font-bold text-lg hover:underline mt-1 inline-block">0904.259.591</a>
+                                    <p class="text-gray-500 text-xs">Mr. Hạnh (Giám đốc điều hành)</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-orange-50 text-qns-orange rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800" data-i18n="contact_email_label">Email hỗ trợ:</h4>
+                                    <a href="mailto:hanhship1974@gmail.com" class="text-gray-600 text-sm mt-1 hover:text-qns-navy block">hanhship1974@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <!-- Working Hours -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="far fa-clock"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-800" data-i18n="contact_hours_label">Giờ làm việc:</h4>
+                                    <p class="text-gray-600 text-sm mt-1" data-i18n="contact_hours_value">Thứ 2 - Chủ Nhật: 07:00 - 22:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 h-64 bg-gray-200">
+                        <!-- Placeholder for Google Maps iframe. Using an iframe centered on Mong Cai -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118318.59858597403!2d107.8860714856456!3d21.51351187421867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36b5ed510b65f2cb%3A0xc3f0b2f518e7c10b!2zTmjDoCBLaMOhY2ggUXXhu5FjIFThur8gTcOzaW5nIEPDoWk!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <!-- RIGHT: CONTACT FORM -->
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-qns-navy h-full">
+                        <h2 class="text-2xl font-bold text-qns-navy mb-6" data-i18n="contact_form_title">Gửi Yêu Cầu Cho Chúng Tôi</h2>
+                        <p class="text-gray-600 text-sm mb-6" data-i18n="contact_form_desc">Vui lòng điền thông tin vào mẫu bên dưới, đội ngũ tư vấn viên của QNSTravel sẽ liên hệ lại với bạn trong thời gian sớm nhất.</p>
+                        
+                        <form class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_label_name">Họ và Tên *</label>
+                                <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-qns-navy focus:ring-1 focus:ring-qns-navy" placeholder="Nhập họ và tên..." data-i18n-placeholder="form_ph_name">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_label_phone">Số Điện Thoại *</label>
+                                    <input type="tel" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-qns-navy focus:ring-1 focus:ring-qns-navy" placeholder="Nhập SĐT..." data-i18n-placeholder="form_ph_phone">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_label_email">Email</label>
+                                    <input type="email" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-qns-navy focus:ring-1 focus:ring-qns-navy" placeholder="Nhập Email..." data-i18n-placeholder="form_ph_email">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_label_service">Dịch vụ quan tâm</label>
+                                <select class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-qns-navy focus:ring-1 focus:ring-qns-navy text-gray-700">
+                                    <option value="" disabled selected data-i18n="form_opt_default">-- Chọn dịch vụ --</option>
+                                    <option value="outbound" data-i18n="form_opt_outbound">Tour Trung Quốc (Outbound)</option>
+                                    <option value="inbound" data-i18n="form_opt_inbound">Tour Việt Nam (Inbound / B2B)</option>
+                                    <option value="visa" data-i18n="form_opt_visa">Dịch vụ Visa / Sổ thông hành</option>
+                                    <option value="other" data-i18n="form_opt_other">Khác (Thuê xe, Đặt phòng...)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_label_message">Nội dung chi tiết *</label>
+                                <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-qns-navy focus:ring-1 focus:ring-qns-navy resize-none" placeholder="Nhập câu hỏi, số lượng khách dự kiến, ngày khởi hành..." data-i18n-placeholder="form_ph_message"></textarea>
+                            </div>
+
+                            <button type="button" class="w-full bg-qns-red text-white py-3.5 rounded-lg font-bold text-lg hover:bg-red-700 transition shadow-lg mt-2 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> <span data-i18n="btn_submit">GỬI YÊU CẦU</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER (Đồng bộ) -->
+    <footer class="bg-qns-navy text-gray-400 py-12 border-t-4 border-qns-red">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Col 1 -->
+          <div>
+            <div class="flex items-center gap-2 mb-4 text-white">
+              <i class="fas fa-anchor text-3xl text-qns-orange"></i>
+              <span class="text-2xl font-bold">QNSTravel</span>
+            </div>
+            <p class="text-sm mb-4" data-i18n="footer_about">
+              Chi nhánh Du lịch Móng Cái - Công ty CP Cung ứng Tàu biển Quảng
+              Ninh (QN Shipcorp). Đơn vị lữ hành quốc tế uy tín hàng đầu tại cửa
+              khẩu Móng Cái.
+            </p>
+
+          </div>
+
+          <!-- Col 2 -->
+          <div>
+            <h3
+              class="text-white font-bold text-lg mb-4 uppercase tracking-wide"
+              data-i18n="footer_contact"
+            >
+              Liên Hệ
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-2 text-qns-orange"></i>
+                <span data-i18n="address"
+                  >Số 25 Đường Hùng Vương, Phường Móng Cái 1, TP. Móng Cái,
+                  Quảng Ninh</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone-alt mr-2 text-qns-orange"></i>
+                <span class="text-white font-bold"
+                  >0904.259.591 (Mr. Hạnh)</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-2 text-qns-orange"></i>
+                <span>hanhship1974@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3 -->
+          
+
+          <!-- Col 4 -->
+          <div>
+            <h3
+              class="text-white font-bold text-lg mb-4 uppercase tracking-wide"
+              data-i18n="footer_connect"
+            >
+              Kết Nối
+            </h3>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="bg-white p-2 rounded text-center">
+                <img
+                  src="https://placehold.co/100x100?text=QR+Zalo"
+                  alt="Zalo"
+                  class="w-full mb-1"
+                />
+                <span class="text-xs font-bold text-blue-600">Zalo (VN)</span>
+              </div>
+              <div class="bg-white p-2 rounded text-center">
+                <img
+                  src="https://placehold.co/100x100?text=QR+WeChat"
+                  alt="WeChat"
+                  class="w-full mb-1"
+                />
+                <span class="text-xs font-bold text-green-600"
+                  >WeChat (CN)</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-xs">
+          <p>
+            &copy; 2026 QNSTravel - QN Shipcorp. All rights reserved. Designed
+            by AI.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- MOBILE NAV -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-top border-t z-50 flex justify-around py-2 text-xs text-gray-600">
+        <a href="index.html" class="flex flex-col items-center hover:text-qns-navy">
+            <i class="fas fa-home text-lg mb-1"></i><span data-i18n="home">Home</span>
+        </a>
+        <a href="outbound-tours.html" class="flex flex-col items-center hover:text-qns-navy">
+            <i class="fas fa-globe-asia text-lg mb-1"></i><span data-i18n="outbound_short">Tour TQ</span>
+        </a>
+        <a href="tel:0904259591" class="flex flex-col items-center text-white -mt-6">
+            <div class="bg-qns-red p-3 rounded-full shadow-lg"><i class="fas fa-phone text-xl"></i></div>
+            <span class="text-qns-red font-bold mt-1" data-i18n="call_now">Gọi ngay</span>
+        </a>
+        <a href="visa-services.html" class="flex flex-col items-center hover:text-qns-navy">
+            <i class="fas fa-passport text-lg mb-1"></i><span data-i18n="visa_short">Visa</span>
+        </a>
+        <a href="#mobile-menu" onclick="document.getElementById('mobile-menu-btn').click()" class="flex flex-col items-center text-qns-red">
+            <i class="fas fa-bars text-lg mb-1"></i><span>Menu</span>
+        </a>
+    </div>
+
+    <!-- GEMINI AI CHAT WIDGET -->
+    <div class="fixed bottom-20 md:bottom-6 right-4 z-50 flex flex-col items-end">
+        <div id="ai-chat-window" class="hidden bg-white rounded-lg shadow-2xl w-80 md:w-96 overflow-hidden border border-gray-200 mb-4 chat-open flex flex-col h-[500px]">
+            <div class="bg-gradient-to-r from-qns-navy to-blue-900 p-4 flex justify-between items-center text-white">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"><i class="fas fa-robot"></i></div>
+                    <div><h3 class="font-bold text-sm">Trợ lý ảo QNSTravel ✨</h3><p class="text-xs text-blue-200">Hỗ trợ thông tin 24/7</p></div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-gray-200"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4">
+                <div class="flex items-start gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-qns-navy text-white flex items-center justify-center flex-shrink-0 text-xs">AI</div>
+                    <div class="bg-white p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm text-sm text-gray-800 border border-gray-100">
+                        Chào bạn! Tôi có thể giúp gì cho bạn? Nếu bạn cần tư vấn nhanh, hãy để lại câu hỏi tại đây nhé. ✨
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 bg-white border-t border-gray-200">
+                <div class="flex items-center gap-2">
+                    <input type="text" id="user-input" placeholder="Hỏi về dịch vụ..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-qns-navy" onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()" class="bg-qns-orange text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-orange-600 transition shadow-sm"><i class="fas fa-paper-plane text-xs"></i></button>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleChat()" class="bg-gradient-to-r from-qns-navy to-blue-800 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 border-2 border-white group relative">
+            <span class="absolute -top-1 -right-1 bg-red-500 w-3 h-3 rounded-full animate-ping"></span>
+            <i class="fas fa-sparkles text-xl group-hover:rotate-12 transition"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // --- TRANSLATION DATA ---
+        const translations = {
+            vn: {
+                b2b_partner: "B2B Partner",
+                agent_login: "Đại lý đăng nhập",
+                home: "Trang chủ",
+                outbound_menu: "Du lịch Trung Quốc",
+                inbound_menu: "Du lịch Việt Nam",
+                visa_menu: "Dịch vụ Visa",
+                about_menu: "Về chúng tôi",
+                contact_menu: "Liên hệ",
+                language: "Ngôn ngữ:",
+                
+                // Contact Page Specific
+                contact_page_title: "Liên Hệ QNSTravel",
+                contact_page_subtitle: "Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn 24/7",
+                
+                contact_info_title: "Thông Tin Liên Hệ",
+                contact_address_label: "Trụ sở chính (Chi nhánh Móng Cái):",
+                address_full: "Số 25 Đường Hùng Vương, Phường Móng Cái 1, TP. Móng Cái, Tỉnh Quảng Ninh, Việt Nam",
+                contact_phone_label: "Hotline / Zalo / WeChat:",
+                contact_email_label: "Email hỗ trợ:",
+                contact_hours_label: "Giờ làm việc:",
+                contact_hours_value: "Thứ 2 - Chủ Nhật: 07:00 - 22:00",
+                
+                contact_form_title: "Gửi Yêu Cầu Cho Chúng Tôi",
+                contact_form_desc: "Vui lòng điền thông tin vào mẫu bên dưới, đội ngũ tư vấn viên của QNSTravel sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
+                
+                form_label_name: "Họ và Tên *",
+                form_ph_name: "Nhập họ và tên...",
+                form_label_phone: "Số Điện Thoại *",
+                form_ph_phone: "Nhập SĐT...",
+                form_label_email: "Email",
+                form_ph_email: "Nhập Email...",
+                
+                form_label_service: "Dịch vụ quan tâm",
+                form_opt_default: "-- Chọn dịch vụ --",
+                form_opt_outbound: "Tour Trung Quốc (Outbound)",
+                form_opt_inbound: "Tour Việt Nam (Inbound / B2B)",
+                form_opt_visa: "Dịch vụ Visa / Sổ thông hành",
+                form_opt_other: "Khác (Thuê xe, Đặt phòng...)",
+                
+                form_label_message: "Nội dung chi tiết *",
+                form_ph_message: "Nhập câu hỏi, số lượng khách dự kiến, ngày khởi hành...",
+                btn_submit: "GỬI YÊU CẦU",
+
+                footer_about: "Chi nhánh Du lịch Móng Cái - Công ty CP Cung ứng Tàu biển Quảng Ninh (QN Shipcorp). Đơn vị lữ hành quốc tế uy tín hàng đầu tại cửa khẩu Móng Cái.",
+                footer_contact: "Liên Hệ",
+                footer_policy: "Chính Sách",
+                footer_connect: "Kết Nối",
+                outbound_short: "Tour TQ",
+                visa_short: "Visa",
+                call_now: "Gọi ngay"
+            },
+            cn: {
+                b2b_partner: "B2B 合作伙伴",
+                agent_login: "代理登录",
+                home: "首页",
+                outbound_menu: "中国旅游",
+                inbound_menu: "越南旅游",
+                visa_menu: "签证服务",
+                about_menu: "关于我们",
+                contact_menu: "联系我们",
+                language: "语言:",
+                
+                // Contact Page Specific
+                contact_page_title: "联系 QNSTravel",
+                contact_page_subtitle: "我们随时准备全天候为您提供支持",
+                
+                contact_info_title: "联系方式",
+                contact_address_label: "总部 (芒街分公司):",
+                address_full: "越南广宁省芒街市芒街1坊雄王路25号",
+                contact_phone_label: "热线 / Zalo / 微信:",
+                contact_email_label: "支持邮箱:",
+                contact_hours_label: "工作时间:",
+                contact_hours_value: "周一至周日: 07:00 - 22:00",
+                
+                contact_form_title: "向我们发送请求",
+                contact_form_desc: "请填写以下表格，QNSTravel 的顾问团队将尽快与您联系。",
+                
+                form_label_name: "姓名 *",
+                form_ph_name: "输入您的姓名...",
+                form_label_phone: "电话号码 *",
+                form_ph_phone: "输入电话号码...",
+                form_label_email: "电子邮件",
+                form_ph_email: "输入电子邮件...",
+                
+                form_label_service: "感兴趣的服务",
+                form_opt_default: "-- 选择服务 --",
+                form_opt_outbound: "中国旅游 (Outbound)",
+                form_opt_inbound: "越南旅游 (Inbound / B2B)",
+                form_opt_visa: "签证 / 通行证服务",
+                form_opt_other: "其他 (租车、订房...)",
+                
+                form_label_message: "详细内容 *",
+                form_ph_message: "输入您的问题、预计人数、出发日期...",
+                btn_submit: "发送请求",
+
+                footer_about: "芒街旅游分公司 - 广宁海运股份公司 (QN Shipcorp)。芒街口岸领先的著名国际旅行社。",
+                footer_contact: "联系方式",
+                footer_policy: "政策",
+                footer_connect: "连接",
+                outbound_short: "中国游",
+                visa_short: "签证",
+                call_now: "立即致电"
+            }
+        };
+
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Also translate placeholders
+            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        }
+
+        // Chat Logic
+        const apiKey = ""; // API Key will be injected
+        const chatWindow = document.getElementById('ai-chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+
+        function toggleChat() {
+            chatWindow.classList.toggle('hidden');
+            if (!chatWindow.classList.contains('hidden')) userInput.focus();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+            addMessage(text, 'user');
+            userInput.value = '';
+            const loadingId = addLoadingIndicator();
+
+            try {
+                const response = await callGeminiAPI(text);
+                removeMessage(loadingId);
+                addMessage(response, 'ai');
+            } catch (error) {
+                console.error("Error:", error);
+                removeMessage(loadingId);
+                addMessage("Xin lỗi, hệ thống đang bận. Vui lòng liên hệ Zalo 0904.259.591.", 'ai');
+            }
+        }
+
+        async function callGeminiAPI(prompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const systemContext = `Bạn là trợ lý QNSTravel. Đang ở trang Liên hệ. Địa chỉ: 25 Hùng Vương, Móng Cái. SĐT Mr Hạnh: 0904.259.591. Hỗ trợ khách hàng để lại thông tin để công ty tư vấn về tour.`;
+            
+            const payload = { contents: [{ parts: [{ text: systemContext + "\nUser: " + prompt }] }] };
+            const response = await fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+            const data = await response.json();
+            return data.candidates[0].content.parts[0].text;
+        }
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = sender === 'user' ? 'flex items-end justify-end gap-2' : 'flex items-start gap-2.5';
+            const avatar = sender === 'ai' ? `<div class="w-8 h-8 rounded-full bg-qns-navy text-white flex items-center justify-center flex-shrink-0 text-xs shadow-md"><i class="fas fa-robot"></i></div>` : '';
+            const bubbleClass = sender === 'user' ? 'bg-qns-navy text-white rounded-tl-lg rounded-tr-lg rounded-bl-lg' : 'bg-white text-gray-800 border border-gray-100 rounded-tr-lg rounded-br-lg rounded-bl-lg';
+            div.innerHTML = `${avatar}<div class="${bubbleClass} p-3 shadow-sm text-sm max-w-[85%] animate-fade-in">${text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addLoadingIndicator() {
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = 'flex items-start gap-2.5';
+            div.innerHTML = `<div class="w-8 h-8 rounded-full bg-qns-navy text-white flex items-center justify-center flex-shrink-0 text-xs shadow-md"><i class="fas fa-robot"></i></div><div class="bg-white p-4 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm border border-gray-100 flex gap-1"><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div></div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return id;
+        }
+        function removeMessage(id) { const el = document.getElementById(id); if (el) el.remove(); }
+    </script>
+</body>
+</html>

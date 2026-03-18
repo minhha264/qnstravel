@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tour Nha Trang - VinWonders - Đảo Khỉ (4N3Đ) - QNSTravel</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* Custom Styles for Timeline */
+      .timeline-point {
+        position: absolute;
+        left: -9px;
+        top: 6px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #dc2626; /* qns-red */
+        border: 2px solid white;
+      }
+
+      /* Chat Widget Animations */
+      @keyframes slideIn {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .chat-open {
+        animation: slideIn 0.3s ease-out forwards;
+      }
+      .typing-dot {
+        animation: typing 1.4s infinite ease-in-out both;
+      }
+      .typing-dot:nth-child(1) {
+        animation-delay: -0.32s;
+      }
+      .typing-dot:nth-child(2) {
+        animation-delay: -0.16s;
+      }
+      @keyframes typing {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              qns: {
+                navy: "#0f172a",
+                red: "#dc2626",
+                orange: "#f97316",
+                gold: "#fbbf24",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 relative">
+    <!-- HEADER (Đồng bộ) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="bg-qns-navy text-white text-xs py-2 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+          <div class="flex space-x-4">
+            <span
+              ><i class="fas fa-envelope mr-1"></i> hanhship1974@gmail.com</span
+            >
+            <span><i class="fas fa-phone mr-1"></i> 0904.259.591</span>
+          </div>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-qns-gold" data-i18n="b2b_partner"
+              >B2B Partner</a
+            >
+            <a href="#" class="hover:text-qns-gold" data-i18n="agent_login"
+              >Đại lý đăng nhập</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center gap-2 group">
+            <div
+              class="text-3xl text-qns-navy group-hover:text-qns-orange transition-colors duration-300"
+            >
+              <i class="fas fa-anchor"></i>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold text-qns-navy leading-none">
+                QNSTravel
+              </h1>
+              <p class="text-xs text-gray-500 tracking-wider">
+                MEMBER OF QN SHIPCORP
+              </p>
+            </div>
+          </a>
+          <nav class="hidden lg:flex space-x-6 font-medium text-gray-700">
+            <a
+              href="index.html"
+              class="hover:text-qns-navy transition"
+              data-i18n="home"
+              >Trang chủ</a
+            >
+            <a
+              href="outbound-tours.html"
+              class="hover:text-qns-navy transition"
+              data-i18n="outbound_menu"
+              >Du lịch Trung Quốc</a
+            >
+            <a
+              href="inbound-tours.html"
+              class="text-qns-red font-bold transition"
+              data-i18n="inbound_menu"
+              >Du lịch Việt Nam</a
+            >
+            <a
+              href="visa-services.html"
+              class="hover:text-qns-navy transition"
+              data-i18n="visa_menu"
+              >Dịch vụ Visa</a
+            >
+            <a
+              href="about.html"
+              class="hover:text-qns-navy transition"
+              data-i18n="about_menu"
+              >Về chúng tôi</a
+            >
+            <a
+              href="contact.html"
+              class="hover:text-qns-navy transition"
+              data-i18n="contact_menu"
+              >Liên hệ</a
+            >
+          </nav>
+          <div class="hidden md:flex items-center space-x-4">
+            <div class="flex items-center border rounded px-2 py-1 space-x-2">
+              <img
+                src="https://flagcdn.com/w20/vn.png"
+                alt="VN"
+                class="cursor-pointer opacity-100 hover:opacity-80"
+                onclick="switchLanguage('vn')"
+              />
+              <span class="text-gray-300">|</span>
+              <img
+                src="https://flagcdn.com/w20/cn.png"
+                alt="CN"
+                class="cursor-pointer opacity-50 hover:opacity-100"
+                onclick="switchLanguage('cn')"
+              />
+            </div>
+            <a
+              href="tel:0904259591"
+              class="bg-qns-red text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg animate-pulse"
+            >
+              <i class="fas fa-phone-alt mr-2"></i> 0904.259.591
+            </a>
+          </div>
+          <button id="mobile-menu-btn" class="lg:hidden text-2xl text-qns-navy">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg"
+      >
+        <div class="flex flex-col p-4 space-y-3 font-medium">
+          <a href="index.html" data-i18n="home">Trang chủ</a>
+          <a href="outbound-tours.html" data-i18n="outbound_menu"
+            >Du lịch Trung Quốc</a
+          >
+          <a
+            href="inbound-tours.html"
+            class="text-qns-red"
+            data-i18n="inbound_menu"
+            >Du lịch Việt Nam</a
+          >
+          <a href="visa-services.html" data-i18n="visa_menu">Dịch vụ Visa</a>
+          <a href="contact.html" data-i18n="contact_menu">Liên hệ</a>
+          <div class="border-t pt-3 flex items-center justify-between">
+            <span data-i18n="language">Ngôn ngữ:</span>
+            <div class="flex space-x-3">
+              <img
+                src="https://flagcdn.com/w20/vn.png"
+                alt="VN"
+                onclick="switchLanguage('vn')"
+              />
+              <img
+                src="https://flagcdn.com/w20/cn.png"
+                alt="CN"
+                onclick="switchLanguage('cn')"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="bg-gray-100 py-3 border-b">
+      <div class="container mx-auto px-4 text-sm text-gray-500">
+        <a href="index.html" class="hover:text-qns-navy" data-i18n="home"
+          >Trang chủ</a
+        >
+        <i class="fas fa-chevron-right mx-2 text-xs"></i>
+        <a
+          href="inbound-tours.html"
+          class="hover:text-qns-navy"
+          data-i18n="inbound_menu"
+          >Du lịch Việt Nam</a
+        >
+        <i class="fas fa-chevron-right mx-2 text-xs"></i>
+        <span class="text-qns-red font-medium" data-i18n="tour_title"
+          >Nha Trang - VinWonders - Đảo Khỉ (4N3Đ)</span
+        >
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="py-8">
+      <div class="container mx-auto px-4">
+        <!-- TOP SECTION: IMAGES & INFO -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <!-- Gallery -->
+          <div>
+            <div
+              class="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg mb-4 group"
+            >
+              <!-- Main Image -->
+              <img
+                id="main-image"
+                src="inbound/vinwonder.jpg"
+                alt="VinWonders Nha Trang"
+                class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+              />
+              <div
+                class="absolute top-4 left-4 bg-qns-red text-white text-xs font-bold px-3 py-1 rounded"
+              >
+                B2B - GIÁ NET
+              </div>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+              <img
+                src="inbound/thapba.png"
+                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                onclick="changeImage(this.src)"
+              />
+              <img
+                src="inbound/daokhi.webp"
+                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                onclick="changeImage(this.src)"
+              />
+              <img
+                src="inbound/tambun.jpg"
+                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                onclick="changeImage(this.src)"
+              />
+              <img
+                src="nhatrang.jpg"
+                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                onclick="changeImage(this.src)"
+              />
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded"
+                  >Mã tour: QNS-IN-02</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded"
+                  ><i class="fas fa-check-circle mr-1"></i>Nhập cảnh Cam
+                  Ranh</span
+                >
+              </div>
+              <h1
+                class="text-3xl font-bold text-qns-navy mb-2"
+                data-i18n="tour_heading"
+              >
+                Nha Trang - VinWonders - Đảo Khỉ (4N3Đ)
+              </h1>
+              <div
+                class="flex items-center text-sm text-gray-500 mb-4 space-x-4"
+              >
+                <span data-i18n="duration_4d3n"
+                  ><i class="far fa-clock text-qns-orange mr-1"></i> 4 Ngày 3
+                  Đêm</span
+                >
+                <span data-i18n="transport_fly"
+                  ><i class="fas fa-plane text-qns-orange mr-1"></i> Bay Cam
+                  Ranh</span
+                >
+              </div>
+
+              <div
+                class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6"
+              >
+                <p
+                  class="text-gray-700 mb-2 font-medium"
+                  data-i18n="highlights_title"
+                >
+                  Điểm nhấn hành trình:
+                </p>
+                <ul class="space-y-1 text-sm text-gray-600">
+                  <li>
+                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    ><span data-i18n="hl_1"
+                      >Vui chơi không giới hạn tại VinWonders (bao gồm cáp
+                      treo/tàu cao tốc).</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    ><span data-i18n="hl_2"
+                      >Tham quan Đảo Khỉ, xem xiếc thú vui nhộn.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    ><span data-i18n="hl_3"
+                      >Tặng vé Tắm bùn khoáng nóng I-Resort cao cấp.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    ><span data-i18n="hl_4"
+                      >Thưởng thức hải sản tươi sống và món Quảng Đông.</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    ><span data-i18n="hl_5"
+                      >Khách sạn 4-5 sao mặt biển Trần Phú.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-end gap-2 mb-6">
+                <span class="text-xs text-gray-500 mb-2" data-i18n="price_ref"
+                  >Giá NET tham khảo:</span
+                >
+                <span class="text-4xl font-bold text-qns-red">$305</span>
+                <span class="text-sm text-gray-500 mb-2"
+                  >/ <span data-i18n="pax">khách</span></span
+                >
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <button
+                onclick="
+                  document
+                    .getElementById('booking-form')
+                    .scrollIntoView({ behavior: 'smooth' })
+                "
+                class="flex-1 bg-qns-navy text-white py-3 rounded-lg font-bold hover:bg-qns-orange transition shadow-lg flex items-center justify-center"
+              >
+                <i class="fas fa-handshake mr-2"></i>
+                <span data-i18n="btn_cooperate">LIÊN HỆ HỢP TÁC</span>
+              </button>
+              <a
+                href="https://zalo.me/0904259591"
+                class="flex-1 border-2 border-qns-navy text-qns-navy py-3 rounded-lg font-bold hover:bg-qns-navy hover:text-white transition flex items-center justify-center"
+              >
+                <i class="fas fa-comment-dots mr-2"></i>
+                <span data-i18n="btn_chat">CHAT TƯ VẤN</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENT TABS & SIDEBAR -->
+        <div class="flex flex-col lg:flex-row gap-8">
+          <!-- Left Content: Tabs -->
+          <div class="w-full lg:w-2/3">
+            <!-- Tab Headers -->
+            <div
+              class="flex border-b border-gray-200 mb-6 overflow-x-auto hide-scrollbar"
+            >
+              <button
+                onclick="openTab(event, 'schedule')"
+                class="tab-btn px-6 py-3 font-bold text-qns-red border-b-2 border-qns-red focus:outline-none whitespace-nowrap"
+                data-i18n="tab_schedule"
+              >
+                Lịch Trình Chi Tiết
+              </button>
+              <button
+                onclick="openTab(event, 'price')"
+                class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-qns-navy focus:outline-none whitespace-nowrap"
+                data-i18n="tab_price"
+              >
+                Giá & Dịch Vụ
+              </button>
+              <button
+                onclick="openTab(event, 'policy')"
+                class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-qns-navy focus:outline-none whitespace-nowrap"
+                data-i18n="tab_policy"
+              >
+                Chính Sách B2B
+              </button>
+            </div>
+
+            <!-- TAB 1: SCHEDULE -->
+            <div id="schedule" class="tab-content block animate-fade-in">
+              <div
+                class="relative border-l-2 border-gray-200 ml-3 space-y-10 pb-8"
+              >
+                <!-- Day 1 -->
+                <div class="relative pl-8">
+                  <div class="timeline-point"></div>
+                  <h3
+                    class="font-bold text-xl text-qns-navy mb-2"
+                    data-i18n="day1_title"
+                  >
+                    NGÀY 01: ĐÓN SÂN BAY CAM RANH - CITY TOUR (Ăn Trưa, Tối)
+                  </h3>
+                  <div
+                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                  >
+                    <p>
+                      <span data-i18n="day1_p1"
+                        >Xe và HDV đón đoàn tại Sân bay Quốc tế Cam Ranh. Về
+                        trung tâm thành phố ăn trưa, nhận phòng khách sạn nghỉ
+                        ngơi.</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day1_p2"
+                        >Chiều: Tham quan Tháp Bà Ponagar - Công trình kiến trúc
+                        Chăm Pa cổ kính. Viếng Chùa Long Sơn với tượng Phật
+                        Trắng khổng lồ.</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day1_p3"
+                        >Tối: Ăn tối. Tự do dạo biển đêm Trần Phú hoặc Quảng
+                        trường 2/4.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="relative pl-8">
+                  <div class="timeline-point"></div>
+                  <h3
+                    class="font-bold text-xl text-qns-navy mb-2"
+                    data-i18n="day2_title"
+                  >
+                    NGÀY 02: VỊNH NHA TRANG - VINWONDERS (Ăn Sáng, Trưa, Tối)
+                  </h3>
+                  <div
+                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                  >
+                    <p>
+                      <span data-i18n="day2_p1"
+                        >Sáng: Đi cano thăm Vịnh Nha Trang (Hòn Mun, Hòn Một,
+                        Làng Chài). Tắm biển, lặn ngắm san hô (chi phí tự
+                        túc).</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day2_p2"
+                        >Trưa: Ăn trưa hải sản tươi sống trên nhà bè.</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day2_p3"
+                        >Chiều: Khởi hành sang Đảo Hòn Tre. Vui chơi tại
+                        VinWonders: Công viên nước, Thủy cung, Đồi vạn hoa, Vườn
+                        thú Quý Vương, Trò chơi cảm giác mạnh...</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day2_p4"
+                        >Tối: Xem biểu diễn nhạc nước/Tata Show. Về lại đất liền
+                        bằng cáp treo hoặc tàu cao tốc. Ăn tối.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="relative pl-8">
+                  <div class="timeline-point"></div>
+                  <h3
+                    class="font-bold text-xl text-qns-navy mb-2"
+                    data-i18n="day3_title"
+                  >
+                    NGÀY 03: ĐẢO KHỈ - TẮM BÙN KHOÁNG (Ăn Sáng, Trưa, Tối)
+                  </h3>
+                  <div
+                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                  >
+                    <p>
+                      <span data-i18n="day3_p1"
+                        >Sáng: Tham quan Đảo Khỉ (Hòn Lao) - Vương quốc của hơn
+                        1200 chú khỉ. Xem xiếc khỉ, đua chó, khỉ thi bơi. Tham
+                        quan Suối Hoa Lan (tùy chọn).</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day3_p2"
+                        >Trưa: Ăn trưa tại nhà hàng.</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day3_p3"
+                        >Chiều: Thư giãn với dịch vụ Tắm bùn khoáng nóng
+                        I-Resort (Vé tặng kèm). Tự do mua sắm tại Chợ Đầm.</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day3_p4"
+                        >Tối: Ăn tối đặc sản Nem nướng Ninh Hòa hoặc Bò Lạc
+                        Cảnh.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="relative pl-8">
+                  <div class="timeline-point"></div>
+                  <h3
+                    class="font-bold text-xl text-qns-navy mb-2"
+                    data-i18n="day4_title"
+                  >
+                    NGÀY 04: NHA TRANG - TIỄN SÂN BAY (Ăn Sáng)
+                  </h3>
+                  <div
+                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                  >
+                    <p>
+                      <span data-i18n="day4_p1"
+                        >Sáng: Ăn sáng tại khách sạn. Tự do tắm biển hoặc thưởng
+                        thức cafe sáng.</span
+                      >
+                    </p>
+                    <p>
+                      <span data-i18n="day4_p2"
+                        >Đến giờ hẹn, xe đưa đoàn ra Sân bay Cam Ranh. Làm thủ
+                        tục đáp chuyến bay về nước. Kết thúc hành trình.</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: PRICE & SERVICE -->
+            <div id="price" class="tab-content hidden animate-fade-in">
+              <div class="bg-blue-50 border border-blue-200 rounded p-4 mb-6">
+                <h4
+                  class="font-bold text-qns-navy mb-2"
+                  data-i18n="price_table_title"
+                >
+                  Bảng Giá NET (Dành cho đại lý)
+                </h4>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-3xl font-bold text-qns-red"
+                    >$305 | 2196 CNY</span
+                  >
+                  <span
+                    class="text-sm text-gray-600"
+                    data-i18n="price_condition"
+                    >/ khách</span
+                  >
+                </div>
+                <p class="text-xs text-gray-500 mt-1" data-i18n="price_note">
+                  *Thanh toán linh hoạt: USD/CNY/VND. Tỷ giá theo thời điểm
+                  thanh toán.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Bao gồm -->
+                <div>
+                  <h4
+                    class="font-bold text-green-700 mb-3 border-b border-green-200 pb-2"
+                  >
+                    <i class="fas fa-check-circle mr-2"></i
+                    ><span data-i18n="inc_title">GIÁ BAO GỒM (NET)</span>
+                  </h4>
+                  <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                      ></i
+                      ><span data-i18n="inc_1"
+                        >Xe đưa đón máy lạnh đời mới.</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                      ></i
+                      ><span data-i18n="inc_2"
+                        >Khách sạn 4-5 sao mặt biển (2 người/phòng).</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                      ></i
+                      ><span data-i18n="inc_3"
+                        >Vé VinWonders trọn gói (Cáp treo + Vui chơi).</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                      ></i
+                      ><span data-i18n="inc_4"
+                        >Vé tham quan Đảo Khỉ, Tháp Bà Ponagar.</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                      ></i
+                      ><span data-i18n="inc_5"
+                        >Ăn uống: Hải sản + Món Quảng Đông.</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                      ></i
+                      ><span data-i18n="inc_6"
+                        >Vé Tắm bùn khoáng nóng I-Resort.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Không bao gồm -->
+                <div>
+                  <h4
+                    class="font-bold text-red-700 mb-3 border-b border-red-200 pb-2"
+                  >
+                    <i class="fas fa-times-circle mr-2"></i
+                    ><span data-i18n="exc_title">KHÔNG BAO GỒM</span>
+                  </h4>
+                  <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      ><span data-i18n="exc_1"
+                        >Vé máy bay khứ hồi (Trừ khi Charter).</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      ><span data-i18n="exc_2">Thuế VAT.</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      ><span data-i18n="exc_3"
+                        >Chi phí cá nhân & Phụ thu phòng đơn.</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      ><span data-i18n="exc_4"
+                        >Tiền Tip cho HDV và Lái xe (Bắt buộc).</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: POLICY -->
+            <div
+              id="policy"
+              class="tab-content hidden animate-fade-in text-sm text-gray-700 space-y-6"
+            >
+              <div>
+                <h4
+                  class="font-bold text-qns-navy mb-2"
+                  data-i18n="policy_promo_title"
+                >
+                  Chính Sách Ưu Đãi (B2B)
+                </h4>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>
+                    <span data-i18n="policy_1"
+                      >Giảm 5% giá tour nếu sử dụng Charter bay thẳng Cam
+                      Ranh.</span
+                    >
+                  </li>
+                  <li>
+                    <span data-i18n="policy_2"
+                      >Tặng thêm 01 bữa tối Buffet Hải sản cho đoàn >30
+                      khách.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4
+                  class="font-bold text-qns-navy mb-2"
+                  data-i18n="policy_note_title"
+                >
+                  Lưu Ý Đối Tác
+                </h4>
+                <div class="bg-yellow-50 p-4 border border-yellow-200 rounded">
+                  <ul class="list-decimal ml-5 space-y-1">
+                    <li>
+                      <span data-i18n="note_1"
+                        >Cung cấp danh sách đoàn trước 7 ngày.</span
+                      >
+                    </li>
+                    <li>
+                      <span data-i18n="note_2"
+                        >Khách sạn có thể thay đổi tương đương (Havana, Quinter
+                        Central...).</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar: Booking Form (Sticky) -->
+          <div class="w-full lg:w-1/3">
+            <div class="lg:sticky lg:top-24 space-y-6">
+              <!-- Form -->
+              <!-- <div
+                id="booking-form"
+                class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-qns-orange"
+              >
+                <h3
+                  class="font-bold text-xl text-center mb-4"
+                  data-i18n="form_title"
+                >
+                  Liên Hệ Hợp Tác
+                </h3>
+                <form>
+                  <div class="mb-3">
+                    <label
+                      class="block text-xs font-bold text-gray-500 mb-1"
+                      data-i18n="form_name"
+                      >Tên đơn vị / Người liên hệ</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:border-qns-navy"
+                      placeholder="..."
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label
+                      class="block text-xs font-bold text-gray-500 mb-1"
+                      data-i18n="form_contact"
+                      >SĐT / WeChat / Email</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:border-qns-navy"
+                      placeholder="..."
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label
+                      class="block text-xs font-bold text-gray-500 mb-1"
+                      data-i18n="form_content"
+                      >Nội dung cần hỗ trợ</label
+                    >
+                    <textarea
+                      class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:border-qns-navy h-24"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="button"
+                    class="w-full bg-qns-navy text-white py-3 rounded font-bold hover:bg-qns-orange transition mb-3"
+                    data-i18n="form_submit"
+                  >
+                    GỬI YÊU CẦU
+                  </button>
+                </form>
+              </div> -->
+
+              <!-- Consultant Info -->
+              <div
+                class="bg-blue-600 text-white p-6 rounded-lg shadow-md flex items-center gap-4"
+              >
+                <div
+                  class="w-14 h-14 rounded-full bg-white text-blue-600 flex items-center justify-center text-2xl font-bold"
+                >
+                  <i class="fas fa-user-tie"></i>
+                </div>
+                <div>
+                  <p
+                    class="text-sm opacity-90"
+                    data-i18n="contact_person_title"
+                  >
+                    Giám đốc điều hành
+                  </p>
+                  <a
+                    href="tel:0904259591"
+                    class="text-2xl font-bold hover:text-qns-gold transition"
+                    >Mr. Hạnh</a
+                  >
+                  <p class="text-xs opacity-80">
+                    WeChat: hanhcutb | Zalo: 0904.259.591
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED TOURS -->
+        <div class="mt-16 pt-10 border-t border-gray-200">
+          <h2
+            class="text-2xl font-bold text-qns-navy mb-6"
+            data-i18n="related_tours"
+          >
+            Các Tour Inbound Khác
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Related 1 -->
+            <a href="inbound1.html"
+              class="bg-white rounded-lg shadow border border-gray-100 overflow-hidden hover:shadow-lg transition group"
+            >
+              <div class="relative h-48 overflow-hidden">
+                <img
+                  src="hlb.jpg"
+                  class="w-full h-full object-cover transition duration-300 group-hover:scale-110"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-lg mb-1 truncate"
+                  data-i18n="rel_1_title"
+                >
+                  Hạ Long - Hà Nội (4N3Đ)
+                </h3>
+                <div class="flex justify-between items-center">
+                  <span
+                    class="text-xs bg-gray-100 px-2 py-1 rounded"
+                    data-i18n="loc_north"
+                    >Miền Bắc</span
+                  >
+                  <span class="font-bold text-qns-red">$285</span>
+                </div>
+              </div>
+            </a>
+            <!-- Related 3 -->
+            <a href="inbound3.html"
+              class="bg-white rounded-lg shadow border border-gray-100 overflow-hidden hover:shadow-lg transition group"
+            >
+              <div class="relative h-48 overflow-hidden">
+                <img
+                  src="hoian.jpg"
+                  class="w-full h-full object-cover transition duration-300 group-hover:scale-110"
+                />
+              </div>
+              <div class="p-4">
+                <h3
+                  class="font-bold text-lg mb-1 truncate"
+                  data-i18n="rel_3_title"
+                >
+                  Đà Nẵng - Hội An - Huế (5N4Đ)
+                </h3>
+                <div class="flex justify-between items-center">
+                  <span
+                    class="text-xs bg-gray-100 px-2 py-1 rounded"
+                    data-i18n="loc_central"
+                    >Miền Trung</span
+                  >
+                  <span
+                    class="font-bold text-qns-navy text-sm"
+                    data-i18n="price_contact"
+                    >Liên hệ</span
+                  >
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER (Đồng bộ) -->
+    <footer class="bg-qns-navy text-gray-400 py-12 border-t-4 border-qns-red">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Col 1 -->
+          <div>
+            <div class="flex items-center gap-2 mb-4 text-white">
+              <i class="fas fa-anchor text-3xl text-qns-orange"></i>
+              <span class="text-2xl font-bold">QNSTravel</span>
+            </div>
+            <p class="text-sm mb-4" data-i18n="footer_about">
+              Chi nhánh Du lịch Móng Cái - Công ty CP Cung ứng Tàu biển Quảng
+              Ninh (QN Shipcorp). Đơn vị lữ hành quốc tế uy tín hàng đầu tại cửa
+              khẩu Móng Cái.
+            </p>
+
+          </div>
+
+          <!-- Col 2 -->
+          <div>
+            <h3
+              class="text-white font-bold text-lg mb-4 uppercase tracking-wide"
+              data-i18n="footer_contact"
+            >
+              Liên Hệ
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-2 text-qns-orange"></i>
+                <span data-i18n="address"
+                  >Số 25 Đường Hùng Vương, Phường Móng Cái 1, TP. Móng Cái,
+                  Quảng Ninh</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone-alt mr-2 text-qns-orange"></i>
+                <span class="text-white font-bold"
+                  >0904.259.591 (Mr. Hạnh)</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-2 text-qns-orange"></i>
+                <span>hanhship1974@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3 -->
+          
+
+          <!-- Col 4 -->
+          <div>
+            <h3
+              class="text-white font-bold text-lg mb-4 uppercase tracking-wide"
+              data-i18n="footer_connect"
+            >
+              Kết Nối
+            </h3>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="bg-white p-2 rounded text-center">
+                <img
+                  src="https://placehold.co/100x100?text=QR+Zalo"
+                  alt="Zalo"
+                  class="w-full mb-1"
+                />
+                <span class="text-xs font-bold text-blue-600">Zalo (VN)</span>
+              </div>
+              <div class="bg-white p-2 rounded text-center">
+                <img
+                  src="https://placehold.co/100x100?text=QR+WeChat"
+                  alt="WeChat"
+                  class="w-full mb-1"
+                />
+                <span class="text-xs font-bold text-green-600"
+                  >WeChat (CN)</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-xs">
+          <p>
+            &copy; 2026 QNSTravel - QN Shipcorp. All rights reserved. Designed
+            by AI.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MOBILE NAV -->
+    <div
+      class="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-top border-t z-50 flex justify-around py-2 text-xs text-gray-600"
+    >
+      <a
+        href="index.html"
+        class="flex flex-col items-center hover:text-qns-navy"
+      >
+        <i class="fas fa-home text-lg mb-1"></i
+        ><span data-i18n="home">Home</span>
+      </a>
+      <a
+        href="inbound-tours.html"
+        class="flex flex-col items-center text-qns-red"
+      >
+        <i class="fas fa-globe-asia text-lg mb-1"></i
+        ><span data-i18n="inbound_menu">Inbound</span>
+      </a>
+      <a
+        href="tel:0904259591"
+        class="flex flex-col items-center text-white -mt-6"
+      >
+        <div class="bg-qns-red p-3 rounded-full shadow-lg">
+          <i class="fas fa-phone text-xl"></i>
+        </div>
+        <span class="text-qns-red font-bold mt-1" data-i18n="call_now"
+          >Gọi ngay</span
+        >
+      </a>
+      <a
+        href="#mobile-menu"
+        onclick="document.getElementById('mobile-menu-btn').click()"
+        class="flex flex-col items-center hover:text-qns-navy"
+      >
+        <i class="fas fa-bars text-lg mb-1"></i><span>Menu</span>
+      </a>
+    </div>
+
+    <!-- GEMINI AI CHAT WIDGET -->
+    <div
+      class="fixed bottom-20 md:bottom-6 right-4 z-50 flex flex-col items-end"
+    >
+      <div
+        id="ai-chat-window"
+        class="hidden bg-white rounded-lg shadow-2xl w-80 md:w-96 overflow-hidden border border-gray-200 mb-4 chat-open flex flex-col h-[500px]"
+      >
+        <div
+          class="bg-gradient-to-r from-qns-navy to-blue-900 p-4 flex justify-between items-center text-white"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+            >
+              <i class="fas fa-robot"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-sm">Trợ lý ảo QNSTravel ✨</h3>
+              <p class="text-xs text-blue-200">Hỗ trợ thông tin tour 24/7</p>
+            </div>
+          </div>
+          <button onclick="toggleChat()" class="text-white hover:text-gray-200">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div
+          id="chat-messages"
+          class="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-4"
+        >
+          <div class="flex items-start gap-2.5">
+            <div
+              class="w-8 h-8 rounded-full bg-qns-navy text-white flex items-center justify-center flex-shrink-0 text-xs"
+            >
+              AI
+            </div>
+            <div
+              class="bg-white p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm text-sm text-gray-800 border border-gray-100"
+            >
+              Chào bạn! Tôi có thể giúp bạn tìm hiểu về tour Inbound Nha Trang -
+              VinWonders không ạ? ✨
+            </div>
+          </div>
+        </div>
+        <div class="p-3 bg-white border-t border-gray-200">
+          <div class="flex items-center gap-2">
+            <input
+              type="text"
+              id="user-input"
+              placeholder="Hỏi về tour..."
+              class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-qns-navy"
+              onkeypress="handleKeyPress(event)"
+            />
+            <button
+              onclick="sendMessage()"
+              class="bg-qns-orange text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-orange-600 transition shadow-sm"
+            >
+              <i class="fas fa-paper-plane text-xs"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        onclick="toggleChat()"
+        class="bg-gradient-to-r from-qns-navy to-blue-800 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 border-2 border-white group relative"
+      >
+        <span
+          class="absolute -top-1 -right-1 bg-red-500 w-3 h-3 rounded-full animate-ping"
+        ></span>
+        <i class="fas fa-sparkles text-xl group-hover:rotate-12 transition"></i>
+      </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Menu Logic
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenuBtn.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden"),
+      );
+
+      // Tab Switching Logic
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(
+            " text-qns-red border-b-2 border-qns-red",
+            " text-gray-500 hover:text-qns-navy",
+          );
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className = evt.currentTarget.className.replace(
+          " text-gray-500 hover:text-qns-navy",
+          " text-qns-red border-b-2 border-qns-red",
+        );
+      }
+
+      // Image Gallery Logic
+      function changeImage(src) {
+        document.getElementById("main-image").src = src.replace(
+          "200x150",
+          "800x600",
+        );
+      }
+
+      // --- TRANSLATION DATA ---
+      const translations = {
+        vn: {
+          b2b_partner: "B2B Partner",
+          agent_login: "Đại lý đăng nhập",
+          home: "Trang chủ",
+          outbound_menu: "Du lịch Trung Quốc",
+          inbound_menu: "Du lịch Việt Nam",
+          visa_menu: "Dịch vụ Visa",
+          about_menu: "Về chúng tôi",
+          contact_menu: "Liên hệ",
+          language: "Ngôn ngữ:",
+
+          tour_title: "Nha Trang - VinWonders - Đảo Khỉ (4N3Đ)",
+          tour_heading: "Nha Trang - VinWonders - Đảo Khỉ (4N3Đ)",
+          duration_4d3n:
+            '<i class="far fa-clock text-qns-orange mr-1"></i> 4 Ngày 3 Đêm',
+          transport_fly:
+            '<i class="fas fa-plane text-qns-orange mr-1"></i> Bay Cam Ranh',
+          highlights_title: "Điểm nhấn hành trình:",
+          hl_1: "Vui chơi không giới hạn tại VinWonders (bao gồm cáp treo/tàu cao tốc).",
+          hl_2: "Tham quan Đảo Khỉ, xem xiếc thú vui nhộn.",
+          hl_3: "Tặng vé Tắm bùn khoáng nóng I-Resort cao cấp.",
+          hl_4: "Thưởng thức hải sản tươi sống và món Quảng Đông.",
+          hl_5: "Khách sạn 4-5 sao mặt biển Trần Phú.",
+          price_ref: "Giá NET tham khảo:",
+          pax: "khách",
+          btn_cooperate: "LIÊN HỆ HỢP TÁC",
+          btn_chat: "CHAT TƯ VẤN",
+          tab_schedule: "Lịch Trình Chi Tiết",
+          tab_price: "Giá & Dịch Vụ",
+          tab_policy: "Chính Sách B2B",
+
+          day1_title:
+            "NGÀY 01: ĐÓN SÂN BAY CAM RANH - CITY TOUR (Ăn Trưa, Tối)",
+          day1_p1:
+            "Xe và HDV đón đoàn tại Sân bay Quốc tế Cam Ranh. Về trung tâm thành phố ăn trưa, nhận phòng khách sạn nghỉ ngơi.",
+          day1_p2:
+            "Chiều: Tham quan Tháp Bà Ponagar - Công trình kiến trúc Chăm Pa cổ kính. Viếng Chùa Long Sơn với tượng Phật Trắng khổng lồ.",
+          day1_p3:
+            "Tối: Ăn tối. Tự do dạo biển đêm Trần Phú hoặc Quảng trường 2/4.",
+
+          day2_title:
+            "NGÀY 02: VỊNH NHA TRANG - VINWONDERS (Ăn Sáng, Trưa, Tối)",
+          day2_p1:
+            "Sáng: Đi cano thăm Vịnh Nha Trang (Hòn Mun, Hòn Một, Làng Chài). Tắm biển, lặn ngắm san hô (chi phí tự túc).",
+          day2_p2: "Trưa: Ăn trưa hải sản tươi sống trên nhà bè.",
+          day2_p3:
+            "Chiều: Khởi hành sang Đảo Hòn Tre. Vui chơi tại VinWonders: Công viên nước, Thủy cung, Đồi vạn hoa, Vườn thú Quý Vương, Trò chơi cảm giác mạnh...",
+          day2_p4:
+            "Tối: Xem biểu diễn nhạc nước/Tata Show. Về lại đất liền bằng cáp treo hoặc tàu cao tốc. Ăn tối.",
+
+          day3_title: "NGÀY 03: ĐẢO KHỈ - TẮM BÙN KHOÁNG (Ăn Sáng, Trưa, Tối)",
+          day3_p1:
+            "Sáng: Tham quan Đảo Khỉ (Hòn Lao) - Vương quốc của hơn 1200 chú khỉ. Xem xiếc khỉ, đua chó, khỉ thi bơi. Tham quan Suối Hoa Lan (tùy chọn).",
+          day3_p2: "Trưa: Ăn trưa tại nhà hàng.",
+          day3_p3:
+            "Chiều: Thư giãn với dịch vụ Tắm bùn khoáng nóng I-Resort (Vé tặng kèm). Tự do mua sắm tại Chợ Đầm.",
+          day3_p4: "Tối: Ăn tối đặc sản Nem nướng Ninh Hòa hoặc Bò Lạc Cảnh.",
+
+          day4_title: "NGÀY 04: NHA TRANG - TIỄN SÂN BAY (Ăn Sáng)",
+          day4_p1:
+            "Sáng: Ăn sáng tại khách sạn. Tự do tắm biển hoặc thưởng thức cafe sáng.",
+          day4_p2:
+            "Đến giờ hẹn, xe đưa đoàn ra Sân bay Cam Ranh. Làm thủ tục đáp chuyến bay về nước. Kết thúc hành trình.",
+
+          price_table_title: "Bảng Giá NET (Dành cho đại lý)",
+          price_condition: "/ khách",
+          price_note:
+            "*Thanh toán linh hoạt: USD/CNY/VND. Tỷ giá theo thời điểm thanh toán.",
+
+          inc_title: "GIÁ BAO GỒM (NET)",
+          inc_1: "Xe đưa đón máy lạnh đời mới.",
+          inc_2: "Khách sạn 4-5 sao mặt biển (2 người/phòng).",
+          inc_3: "Vé VinWonders trọn gói (Cáp treo + Vui chơi).",
+          inc_4: "Vé tham quan Đảo Khỉ, Tháp Bà Ponagar.",
+          inc_5: "Ăn uống: Hải sản + Món Quảng Đông.",
+          inc_6: "Vé Tắm bùn khoáng nóng I-Resort.",
+
+          exc_title: "KHÔNG BAO GỒM",
+          exc_1: "Vé máy bay khứ hồi (Trừ khi Charter).",
+          exc_2: "Thuế VAT.",
+          exc_3: "Chi phí cá nhân & Phụ thu phòng đơn.",
+          exc_4: "Tiền Tip cho HDV và Lái xe (Bắt buộc).",
+
+          policy_promo_title: "Chính Sách Ưu Đãi (B2B)",
+          policy_1: "Giảm 5% giá tour nếu sử dụng Charter bay thẳng Cam Ranh.",
+          policy_2: "Tặng thêm 01 bữa tối Buffet Hải sản cho đoàn >30 khách.",
+
+          policy_note_title: "Lưu Ý Đối Tác",
+          note_1: "Cung cấp danh sách đoàn trước 7 ngày.",
+          note_2:
+            "Khách sạn có thể thay đổi tương đương (Havana, Quinter Central...).",
+
+          form_title: "Liên Hệ Hợp Tác",
+          form_name: "Tên đơn vị / Người liên hệ",
+          form_contact: "SĐT / WeChat / Email",
+          form_content: "Nội dung cần hỗ trợ",
+          form_submit: "GỬI YÊU CẦU",
+          contact_person_title: "Giám đốc điều hành",
+
+          related_tours: "Các Tour Inbound Khác",
+          rel_1_title: "Hạ Long - Hà Nội (4N3Đ)",
+          loc_north: "Miền Bắc",
+          rel_3_title: "Đà Nẵng - Hội An - Huế (5N4Đ)",
+          loc_central: "Miền Trung",
+          price_contact: "Liên hệ",
+
+          footer_about:
+            "Chi nhánh Du lịch Móng Cái - Công ty CP Cung ứng Tàu biển Quảng Ninh (QN Shipcorp). Đơn vị lữ hành quốc tế uy tín hàng đầu tại cửa khẩu Móng Cái.",
+          footer_contact: "Liên Hệ",
+          address:
+            "Số 25 Đường Hùng Vương, Phường Móng Cái 1, TP. Móng Cái, Quảng Ninh",
+          footer_policy: "Chính Sách",
+          footer_connect: "Kết Nối",
+          call_now: "Gọi ngay",
+        },
+        cn: {
+          b2b_partner: "B2B 合作伙伴",
+          agent_login: "代理登录",
+          home: "首页",
+          outbound_menu: "中国旅游",
+          inbound_menu: "越南旅游",
+          visa_menu: "签证服务",
+          about_menu: "关于我们",
+          contact_menu: "联系我们",
+          tour_title: "芽庄 - VinWonders - 猴岛 (4天3晚)",
+          tour_heading: "芽庄 - VinWonders - 猴岛 (4天3晚)",
+          duration_4d3n:
+            '<i class="far fa-clock text-qns-orange mr-1"></i> 4 天 3 晚',
+          transport_fly:
+            '<i class="fas fa-plane text-qns-orange mr-1"></i> 飞往金兰',
+          highlights_title: "行程亮点:",
+          hl_1: "无限畅玩 VinWonders（含缆车/快艇）。",
+          hl_2: "参观猴岛，观看有趣的动物表演。",
+          hl_3: "赠送高级 I-Resort 泥浆浴门票。",
+          hl_4: "享用新鲜海鲜和粤式菜肴。",
+          hl_5: "陈富海滨路 4-5 星级酒店。",
+          price_ref: "参考净价 (NET):",
+          pax: "客",
+          btn_cooperate: "合作联系",
+          btn_chat: "在线咨询",
+          tab_schedule: "详细行程",
+          tab_price: "价格与服务",
+          tab_policy: "B2B 政策",
+
+          day1_title: "第一天：接金兰机场 - 市区游 (午/晚餐)",
+          day1_p1:
+            "车和导游在金兰国际机场接团。返回市中心享用午餐，办理入住休息。",
+          day1_p2:
+            "下午：参观婆那加占婆塔 (Ponagar Tower) - 古老的占婆建筑。参拜龙山寺 (Long Son Pagoda) 和巨大的白佛像。",
+          day1_p3: "晚上：享用晚餐。自由漫步陈富海滩夜景或 2/4 广场。",
+
+          day2_title: "第二天：芽庄湾 - VINWONDERS (早/午/晚餐)",
+          day2_p1:
+            "早上：乘快艇参观芽庄湾（黑岛、一岛、渔村）。游泳、潜水看珊瑚（费用自理）。",
+          day2_p2: "中午：在渔排上享用新鲜海鲜午餐。",
+          day2_p3:
+            "下午：前往竹岛 (Hon Tre)。在 VinWonders 游玩：水上乐园、水族馆、万花丘、贵王动物园、惊险游戏...",
+          day2_p4:
+            "晚上：观看音乐喷泉/塔塔秀 (Tata Show)。乘坐缆车或快艇返回陆地。享用晚餐。",
+
+          day3_title: "第三天：猴岛 - 泥浆浴 (早/午/晚餐)",
+          day3_p1:
+            "早上：参观猴岛 (Hon Lao) - 1200 多只猴子的王国。观看猴子马戏、赛狗、猴子游泳。参观兰花溪（可选）。",
+          day3_p2: "中午：在餐厅享用午餐。",
+          day3_p3:
+            "下午：享受 I-Resort 热矿泥浴（赠送门票）。在 Dam 市场自由购物。",
+          day3_p4: "晚上：享用宁和烤肉春卷或 Lac Canh 牛肉特产晚餐。",
+
+          day4_title: "第四天：芽庄 - 送机 (早餐)",
+          day4_p1: "早上：在酒店享用早餐。自由游泳或享用早晨咖啡。",
+          day4_p2:
+            "到约定时间，车送团前往金兰机场。办理回国登机手续。行程结束。",
+
+          price_table_title: "净价表 (NET) - 仅限代理",
+          price_condition: "/ 客",
+          price_note: "*支付灵活：USD/CNY/VND。汇率按支付时点计算。",
+
+          inc_title: "包含 (NET)",
+          inc_1: "全程新款空调接送车。",
+          inc_2: "海滨 4-5 星级酒店 (2人/间)。",
+          inc_3: "VinWonders 全包门票 (缆车 + 游玩)。",
+          inc_4: "猴岛、婆那加塔门票。",
+          inc_5: "餐饮：海鲜 + 粤式菜肴。",
+          inc_6: "I-Resort 矿泥浴门票。",
+
+          exc_title: "不包含",
+          exc_1: "往返机票 (包机除外)。",
+          exc_2: "增值税 (VAT)。",
+          exc_3: "个人消费 & 单房差。",
+          exc_4: "导游和司机小费 (强制)。",
+
+          policy_promo_title: "优惠政策 (B2B)",
+          policy_1: "如果使用金兰直飞包机，团费优惠 5%。",
+          policy_2: "30 人以上团队赠送 1 顿海鲜自助晚餐。",
+
+          policy_note_title: "合作伙伴须知",
+          note_1: "请提前 7 天提供团队名单。",
+          note_2: "酒店可能会更换为同级 (Havana, Quinter Central...)。",
+
+          form_title: "合作联系",
+          form_name: "单位名称 / 联系人",
+          form_contact: "电话 / 微信 / 邮箱",
+          form_content: "需要支持的内容",
+          form_submit: "发送请求",
+          contact_person_title: "执行总监",
+
+          related_tours: "其他入境旅游线路",
+          rel_1_title: "下龙湾 - 河内 (4天3晚)",
+          loc_north: "北部",
+          rel_3_title: "岘港 - 会安 - 顺化 (5天4晚)",
+          loc_central: "中部",
+          price_contact: "联系",
+
+          footer_about:
+            "芒街旅游分公司 - 广宁海运股份公司 (QN Shipcorp)。芒街口岸领先的著名国际旅行社。",
+          footer_contact: "联系方式",
+          address: "广宁省芒街市芒街1坊雄王路25号",
+          footer_policy: "政策",
+          footer_connect: "连接",
+          call_now: "立即致电",
+        },
+      };
+
+      function switchLanguage(lang) {
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+      }
+
+      // Chat Logic
+      const apiKey = ""; // API Key will be injected
+      const chatWindow = document.getElementById("ai-chat-window");
+      const chatMessages = document.getElementById("chat-messages");
+      const userInput = document.getElementById("user-input");
+
+      function toggleChat() {
+        chatWindow.classList.toggle("hidden");
+        if (!chatWindow.classList.contains("hidden")) userInput.focus();
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") sendMessage();
+      }
+
+      async function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text) return;
+        addMessage(text, "user");
+        userInput.value = "";
+        const loadingId = addLoadingIndicator();
+
+        try {
+          const response = await callGeminiAPI(text);
+          removeMessage(loadingId);
+          addMessage(response, "ai");
+        } catch (error) {
+          console.error("Error:", error);
+          removeMessage(loadingId);
+          addMessage(
+            "Xin lỗi, hệ thống đang bận. Vui lòng liên hệ Zalo 0904.259.591.",
+            "ai",
+          );
+        }
+      }
+
+      async function callGeminiAPI(prompt) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const systemContext = `Bạn là trợ lý QNSTravel. Đang ở trang Chi tiết Tour Inbound Nha Trang - VinWonders (4N3Đ). Giá NET $305. Bao gồm: KS 4-5 sao, VinWonders, Đảo Khỉ, Tắm bùn. Khách Trung Quốc. Tư vấn chuyên nghiệp.`;
+
+        const payload = {
+          contents: [
+            { parts: [{ text: systemContext + "\nUser: " + prompt }] },
+          ],
+        };
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await response.json();
+        return data.candidates[0].content.parts[0].text;
+      }
+
+      function addMessage(text, sender) {
+        const div = document.createElement("div");
+        div.className =
+          sender === "user"
+            ? "flex items-end justify-end gap-2"
+            : "flex items-start gap-2.5";
+        const avatar =
+          sender === "ai"
+            ? `<div class="w-8 h-8 rounded-full bg-qns-navy text-white flex items-center justify-center flex-shrink-0 text-xs shadow-md"><i class="fas fa-robot"></i></div>`
+            : "";
+        const bubbleClass =
+          sender === "user"
+            ? "bg-qns-navy text-white rounded-tl-lg rounded-tr-lg rounded-bl-lg"
+            : "bg-white text-gray-800 border border-gray-100 rounded-tr-lg rounded-br-lg rounded-bl-lg";
+        div.innerHTML = `${avatar}<div class="${bubbleClass} p-3 shadow-sm text-sm max-w-[85%] animate-fade-in">${text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>")}</div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function addLoadingIndicator() {
+        const id = "loading-" + Date.now();
+        const div = document.createElement("div");
+        div.id = id;
+        div.className = "flex items-start gap-2.5";
+        div.innerHTML = `<div class="w-8 h-8 rounded-full bg-qns-navy text-white flex items-center justify-center flex-shrink-0 text-xs shadow-md"><i class="fas fa-robot"></i></div><div class="bg-white p-4 rounded-tr-lg rounded-br-lg rounded-bl-lg shadow-sm border border-gray-100 flex gap-1"><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div></div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return id;
+      }
+      function removeMessage(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+      }
+    </script>
+  </body>
+</html>
