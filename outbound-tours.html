@@ -73,7 +73,7 @@
     </script>
   </head>
   <body class="bg-gray-50 text-gray-800 relative">
-    <!-- HEADER (Đồng bộ với Index) -->
+    <!-- HEADER -->
     <header class="bg-white shadow-md sticky top-0 z-50">
       <div class="bg-qns-navy text-white text-xs py-2 hidden md:block">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -102,10 +102,10 @@
               <i class="fas fa-anchor"></i>
             </div>
             <div>
-              <h1 class="text-2xl font-bold text-qns-navy leading-none">
+              <h1 class="text-xl md:text-2xl font-bold text-qns-navy leading-none">
                 QNSTravel
               </h1>
-              <p class="text-xs text-gray-500 tracking-wider">
+              <p class="text-[10px] md:text-xs text-gray-500 tracking-wider">
                 MEMBER OF QN SHIPCORP
               </p>
             </div>
@@ -148,32 +148,37 @@
               >Liên hệ</a
             >
           </nav>
-          <div class="hidden md:flex items-center space-x-4">
+          
+          <!-- Nhóm nút bên phải: Cờ ngôn ngữ (Luôn hiện) + Nút gọi (Hiện trên desktop) + Hamburger Menu -->
+          <div class="flex items-center space-x-3 md:space-x-4">
+            <!-- Bộ chuyển ngôn ngữ: Giờ sẽ luôn hiển thị trên cả mobile -->
             <div class="flex items-center border rounded px-2 py-1 space-x-2">
               <img
                 src="https://flagcdn.com/w20/vn.png"
                 alt="VN"
-                class="cursor-pointer opacity-100 hover:opacity-80"
+                class="cursor-pointer opacity-100 hover:opacity-80 w-5 h-auto"
                 onclick="switchLanguage('vn')"
               />
               <span class="text-gray-300">|</span>
               <img
                 src="https://flagcdn.com/w20/cn.png"
                 alt="CN"
-                class="cursor-pointer opacity-50 hover:opacity-100"
+                class="cursor-pointer opacity-50 hover:opacity-100 w-5 h-auto"
                 onclick="switchLanguage('cn')"
               />
             </div>
+            
             <a
               href="tel:0904259591"
-              class="bg-qns-red text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg animate-pulse"
+              class="hidden md:flex bg-qns-red text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg animate-pulse items-center"
             >
               <i class="fas fa-phone-alt mr-2"></i> 0904.259.591
             </a>
+            
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-qns-navy focus:outline-none">
+              <i class="fas fa-bars"></i>
+            </button>
           </div>
-          <button id="mobile-menu-btn" class="lg:hidden text-2xl text-qns-navy">
-            <i class="fas fa-bars"></i>
-          </button>
         </div>
       </div>
       <!-- Mobile Menu -->
@@ -181,7 +186,7 @@
         id="mobile-menu"
         class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg"
       >
-        <div class="flex flex-col p-4 space-y-3 font-medium">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-sm">
           <a href="index.html" data-i18n="home">Trang chủ</a>
           <a
             href="outbound-tours.html"
@@ -194,38 +199,25 @@
           >
           <a href="visa-services.html" data-i18n="visa_menu">Dịch vụ Visa</a>
           <a href="contact.html" data-i18n="contact_menu">Liên hệ</a>
-          <div class="border-t pt-3 flex items-center justify-between">
-            <span data-i18n="language">Ngôn ngữ:</span>
-            <div class="flex space-x-3">
-              <img
-                src="https://flagcdn.com/w20/vn.png"
-                alt="VN"
-                onclick="switchLanguage('vn')"
-              />
-              <img
-                src="https://flagcdn.com/w20/cn.png"
-                alt="CN"
-                onclick="switchLanguage('cn')"
-              />
-            </div>
-          </div>
+          <!-- Đã bỏ phần chọn ngôn ngữ ở đây vì đã đưa lên top bar -->
         </div>
       </div>
     </header>
 
-    <!-- PAGE HEADER (Giữ nguyên banner của trang con) -->
+    <!-- PAGE HEADER -->
     <div
-      class="relative h-[300px] bg-cover bg-center flex items-center justify-center text-white"
+      class="relative h-[250px] md:h-[300px] bg-cover bg-center flex items-center justify-center text-white"
       style="
         background-image: url(&quot;bga.jpg&quot;);
       "
     >
       <div class="absolute inset-0 bg-black bg-opacity-50"></div>
       <div class="relative z-10 text-center container mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="page_title">
+        <!-- Đã làm font chữ h1 nhỏ hơn trên mobile (text-3xl thay vì text-4xl) -->
+        <h1 class="text-3xl md:text-5xl font-bold mb-3 md:mb-4" data-i18n="page_title">
           Du Lịch Trung Quốc
         </h1>
-        <p class="text-lg md:text-xl text-gray-200" data-i18n="page_subtitle">
+        <p class="text-base md:text-xl text-gray-200" data-i18n="page_subtitle">
           Khởi hành từ Cửa khẩu Quốc tế Móng Cái - Thủ tục đơn giản - Trải
           nghiệm đẳng cấp
         </p>
@@ -233,53 +225,53 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <section class="py-12">
+    <section class="py-10 md:py-12">
       <div class="container mx-auto px-4">
-        <!-- TOUR LIST (Đã bỏ Sidebar Filter, mở rộng full width, căn giữa) -->
         <main class="w-full max-w-5xl mx-auto">
           <!-- Sort Bar -->
           <div class="flex justify-between items-center mb-6">
-            <p class="text-gray-600">
+            <p class="text-gray-600 text-sm md:text-base">
               <span data-i18n="showing">Hiển thị</span>
               <span class="font-bold">3</span>
               <span data-i18n="tours">tour du lịch</span>
             </p>
           </div>
 
-          <!-- Tour Cards (Giữ nguyên bố cục ngang Horizontal layout của trang danh sách) -->
-          <div class="space-y-8">
-            <!-- CARD 1: TOUR ĐÔNG HƯNG (Trong ngày) -->
+          <!-- Tour Cards -->
+          <div class="space-y-6 md:space-y-8">
+            <!-- CARD 1: TOUR ĐÔNG HƯNG -->
             <div
               class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col md:flex-row h-auto md:h-72 border border-gray-100 group"
             >
-              <div class="md:w-2/5 relative h-56 md:h-full overflow-hidden">
+              <div class="md:w-2/5 relative h-48 md:h-full overflow-hidden">
                 <img
                   src="dh.jpg"
                   alt="Đông Hưng"
                   class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                 />
                 <div
-                  class="absolute top-2 left-2 bg-qns-red text-white text-xs font-bold px-2 py-1 rounded"
+                  class="absolute top-2 left-2 bg-qns-red text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded"
                 >
                   BEST SELLER
                 </div>
               </div>
-              <div class="p-6 md:w-3/5 flex flex-col justify-between">
+              <div class="p-4 md:p-6 md:w-3/5 flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-between items-start">
+                  <div class="flex justify-between items-start gap-2">
+                    <!-- Text tiêu đề được chỉnh nhỏ lại trên mobile: text-lg -->
                     <h2
-                      class="text-xl md:text-2xl font-bold text-qns-navy mb-2 hover:text-qns-orange cursor-pointer"
+                      class="text-lg md:text-2xl font-bold text-qns-navy mb-2 hover:text-qns-orange cursor-pointer leading-tight"
                       data-i18n="tour1_title"
                     >
                       Tour Móng Cái - Đông Hưng (Trong ngày)
                     </h2>
                     <span
-                      class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded whitespace-nowrap"
+                      class="bg-gray-100 text-gray-600 text-[10px] md:text-xs px-2 py-1 rounded whitespace-nowrap mt-1"
                       data-i18n="duration_1day"
                       ><i class="far fa-clock mr-1"></i>1 Ngày</span
                     >
                   </div>
-                  <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <div class="flex flex-wrap items-center text-xs md:text-sm text-gray-500 mb-2 md:mb-3 gap-y-1">
                     <span class="mr-4" data-i18n="route1"
                       ><i class="fas fa-map-marker-alt mr-1 text-qns-red"></i>
                       Móng Cái - Đông Hưng</span
@@ -289,7 +281,7 @@
                     >
                   </div>
                   <p
-                    class="text-gray-600 text-sm mb-4 line-clamp-2"
+                    class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2"
                     data-i18n="tour1_desc_long"
                   >
                     Khám phá nước bạn láng giềng chỉ trong 1 ngày. Tham quan
@@ -297,50 +289,51 @@
                     thưởng thức đặc sản Lẩu Sữa trứ danh.
                   </p>
                   <!-- Highlights Tags -->
-                  <div class="flex flex-wrap gap-2 mb-2">
+                  <div class="flex flex-wrap gap-1.5 md:gap-2 mb-2">
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_dinhthu"
                       >Dinh thự Trần Công Quán</span
                     >
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_lausua"
                       >Lẩu Sữa</span
                     >
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_sieuthi"
                       >Siêu thị</span
                     >
                   </div>
                 </div>
+                <!-- Căn chỉnh lại khu vực chứa giá và nút bấm cho Responsive -->
                 <div
-                  class="flex items-center justify-between mt-4 md:mt-0 pt-4 border-t border-gray-100"
+                  class="flex items-center justify-between mt-3 md:mt-0 pt-3 md:pt-4 border-t border-gray-100 flex-wrap gap-y-3"
                 >
                   <div class="flex flex-col">
-                    <span class="text-xs text-gray-400 line-through"
+                    <span class="text-[10px] md:text-xs text-gray-400 line-through"
                       >950.000đ</span
                     >
-                    <span class="text-2xl font-bold text-qns-red"
+                    <span class="text-xl md:text-2xl font-bold text-qns-red"
                       >780.000đ</span
                     >
                   </div>
-                  <div class="flex gap-2">
+                  <!-- Chỉnh sửa class các nút: Thu nhỏ padding, text-size và wrap an toàn -->
+                  <div class="flex flex-wrap gap-2 justify-end w-full sm:w-auto">
                     <button
                       onclick="toggleChat()"
-                      class="px-4 py-2 border border-qns-navy text-qns-navy rounded font-bold hover:bg-gray-50 text-sm"
+                      class="px-3 py-1.5 md:px-4 md:py-2 border border-qns-navy text-qns-navy rounded font-bold hover:bg-gray-50 text-xs md:text-sm whitespace-nowrap"
                       data-i18n="btn_consult"
                     >
                       Tư vấn
                     </button>
-                    <!-- Link tới tour-detail2.html (Tour 1) -->
                     <a
                       href="tour-detail2.html"
-                      class="px-4 py-2 bg-qns-navy text-white rounded font-bold hover:bg-qns-orange transition text-sm shadow-md flex items-center"
+                      class="px-3 py-1.5 md:px-4 md:py-2 bg-qns-navy text-white rounded font-bold hover:bg-qns-orange transition text-xs md:text-sm shadow-md flex items-center whitespace-nowrap"
                       data-i18n="btn_view"
                     >
-                      Xem Chi Tiết <i class="fas fa-arrow-right ml-2"></i>
+                      Xem Chi Tiết <i class="fas fa-arrow-right ml-1 md:ml-2"></i>
                     </a>
                   </div>
                 </div>
@@ -351,41 +344,41 @@
             <div
               class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col md:flex-row h-auto md:h-72 border border-gray-100 group"
             >
-              <div class="md:w-2/5 relative h-56 md:h-full overflow-hidden">
+              <div class="md:w-2/5 relative h-48 md:h-full overflow-hidden">
                 <img
                   src="tbct.jpg"
                   alt="Thái Bình Cổ Trấn"
                   class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                 />
                 <div
-                  class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded"
+                  class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded"
                   data-i18n="tag_train"
                 >
                   TÀU CAO TỐC
                 </div>
                 <div
-                  class="absolute bottom-2 right-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded"
+                  class="absolute bottom-2 right-2 bg-black bg-opacity-60 text-white text-[10px] md:text-xs px-2 py-1 rounded"
                   data-i18n="tag_checkin"
                 >
                   <i class="fas fa-camera mr-1"></i>Check-in cực đẹp
                 </div>
               </div>
-              <div class="p-6 md:w-3/5 flex flex-col justify-between">
+              <div class="p-4 md:p-6 md:w-3/5 flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-between items-start">
+                  <div class="flex justify-between items-start gap-2">
                     <h2
-                      class="text-xl md:text-2xl font-bold text-qns-navy mb-2 hover:text-qns-orange cursor-pointer"
+                      class="text-lg md:text-2xl font-bold text-qns-navy mb-2 hover:text-qns-orange cursor-pointer leading-tight"
                       data-i18n="tour2_title"
                     >
                       Đông Hưng - Nam Ninh - Thái Bình Cổ Trấn
                     </h2>
                     <span
-                      class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded whitespace-nowrap"
+                      class="bg-gray-100 text-gray-600 text-[10px] md:text-xs px-2 py-1 rounded whitespace-nowrap mt-1"
                       data-i18n="duration_3d2n"
                       ><i class="far fa-clock mr-1"></i>3 Ngày 2 Đêm</span
                     >
                   </div>
-                  <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <div class="flex flex-wrap items-center text-xs md:text-sm text-gray-500 mb-2 md:mb-3 gap-y-1">
                     <span class="mr-4" data-i18n="route2"
                       ><i class="fas fa-map-marker-alt mr-1 text-qns-red"></i>
                       Nam Ninh, Trung Quốc</span
@@ -396,56 +389,55 @@
                     >
                   </div>
                   <p
-                    class="text-gray-600 text-sm mb-4 line-clamp-2"
+                    class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2"
                     data-i18n="tour2_desc_long"
                   >
                     Hành trình trải nghiệm "Tiểu Phượng Hoàng Cổ Trấn" lung linh
                     về đêm. Tham quan Thanh Tú Sơn, Phố đêm Nam Ninh Chi Dạ. Cam
                     kết NO SHOPPING.
                   </p>
-                  <div class="flex flex-wrap gap-2 mb-2">
+                  <div class="flex flex-wrap gap-1.5 md:gap-2 mb-2">
                     <span
-                      class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded border border-green-100"
+                      class="text-[10px] md:text-xs bg-green-50 text-green-600 px-2 py-1 rounded border border-green-100"
                       >No Shopping</span
                     >
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_4star"
                       >KS 4 Sao</span
                     >
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_thaibinh"
                       >Thái Bình Cổ Trấn</span
                     >
                   </div>
                 </div>
                 <div
-                  class="flex items-center justify-between mt-4 md:mt-0 pt-4 border-t border-gray-100"
+                  class="flex items-center justify-between mt-3 md:mt-0 pt-3 md:pt-4 border-t border-gray-100 flex-wrap gap-y-3"
                 >
                   <div class="flex flex-col">
-                    <span class="text-xs text-gray-400" data-i18n="price_from"
+                    <span class="text-[10px] md:text-xs text-gray-400" data-i18n="price_from"
                       >Giá từ</span
                     >
-                    <span class="text-2xl font-bold text-qns-red"
+                    <span class="text-xl md:text-2xl font-bold text-qns-red"
                       >4.490.000đ</span
                     >
                   </div>
-                  <div class="flex gap-2">
+                  <div class="flex flex-wrap gap-2 justify-end w-full sm:w-auto">
                     <button
                       onclick="toggleChat()"
-                      class="px-4 py-2 border border-qns-navy text-qns-navy rounded font-bold hover:bg-gray-50 text-sm"
+                      class="px-3 py-1.5 md:px-4 md:py-2 border border-qns-navy text-qns-navy rounded font-bold hover:bg-gray-50 text-xs md:text-sm whitespace-nowrap"
                       data-i18n="btn_consult"
                     >
                       Tư vấn
                     </button>
-                    <!-- Link tới tour-detail3.html (Tour 2) -->
                     <a
                       href="tour-detail3.html"
-                      class="px-4 py-2 bg-qns-navy text-white rounded font-bold hover:bg-qns-orange transition text-sm shadow-md flex items-center"
+                      class="px-3 py-1.5 md:px-4 md:py-2 bg-qns-navy text-white rounded font-bold hover:bg-qns-orange transition text-xs md:text-sm shadow-md flex items-center whitespace-nowrap"
                       data-i18n="btn_view"
                     >
-                      Xem Chi Tiết <i class="fas fa-arrow-right ml-2"></i>
+                      Xem Chi Tiết <i class="fas fa-arrow-right ml-1 md:ml-2"></i>
                     </a>
                   </div>
                 </div>
@@ -456,29 +448,29 @@
             <div
               class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col md:flex-row h-auto md:h-72 border border-gray-100 group"
             >
-              <div class="md:w-2/5 relative h-56 md:h-full overflow-hidden">
+              <div class="md:w-2/5 relative h-48 md:h-full overflow-hidden">
                 <img
                   src="bh.webp"
                   alt="Biển Bắc Hải"
                   class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                 />
               </div>
-              <div class="p-6 md:w-3/5 flex flex-col justify-between">
+              <div class="p-4 md:p-6 md:w-3/5 flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-between items-start">
+                  <div class="flex justify-between items-start gap-2">
                     <h2
-                      class="text-xl md:text-2xl font-bold text-qns-navy mb-2 hover:text-qns-orange cursor-pointer"
+                      class="text-lg md:text-2xl font-bold text-qns-navy mb-2 hover:text-qns-orange cursor-pointer leading-tight"
                       data-i18n="tour3_title"
                     >
                       Nam Ninh - Bắc Hải - Biển Ngân Than
                     </h2>
                     <span
-                      class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded whitespace-nowrap"
+                      class="bg-gray-100 text-gray-600 text-[10px] md:text-xs px-2 py-1 rounded whitespace-nowrap mt-1"
                       data-i18n="duration_3d2n"
                       ><i class="far fa-clock mr-1"></i>3 Ngày 2 Đêm</span
                     >
                   </div>
-                  <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <div class="flex flex-wrap items-center text-xs md:text-sm text-gray-500 mb-2 md:mb-3 gap-y-1">
                     <span class="mr-4" data-i18n="route3"
                       ><i class="fas fa-map-marker-alt mr-1 text-qns-red"></i>
                       Bắc Hải, Quảng Tây</span
@@ -489,56 +481,55 @@
                     >
                   </div>
                   <p
-                    class="text-gray-600 text-sm mb-4 line-clamp-2"
+                    class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2"
                     data-i18n="tour3_desc_long"
                   >
                     Kết hợp nghỉ dưỡng tại bãi biển đẹp nhất Bắc Hải (Hawaii
                     Phương Đông) và khám phá phố cổ Bắc Hải trăm năm tuổi.
                   </p>
-                  <div class="flex flex-wrap gap-2 mb-2">
+                  <div class="flex flex-wrap gap-1.5 md:gap-2 mb-2">
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_nganthan"
                       >Biển Ngân Than</span
                     >
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_phoco"
                       >Phố Cổ Bắc Hải</span
                     >
                     <span
-                      class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
+                      class="text-[10px] md:text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded border border-blue-100"
                       data-i18n="tag_langluuha"
                       >Làng Lưu Hạ</span
                     >
                   </div>
                 </div>
                 <div
-                  class="flex items-center justify-between mt-4 md:mt-0 pt-4 border-t border-gray-100"
+                  class="flex items-center justify-between mt-3 md:mt-0 pt-3 md:pt-4 border-t border-gray-100 flex-wrap gap-y-3"
                 >
                   <div class="flex flex-col">
-                    <span class="text-xs text-gray-400" data-i18n="price_from"
+                    <span class="text-[10px] md:text-xs text-gray-400" data-i18n="price_from"
                       >Giá từ</span
                     >
-                    <span class="text-2xl font-bold text-qns-red"
+                    <span class="text-xl md:text-2xl font-bold text-qns-red"
                       >4.490.000đ</span
                     >
                   </div>
-                  <div class="flex gap-2">
+                  <div class="flex flex-wrap gap-2 justify-end w-full sm:w-auto">
                     <button
                       onclick="toggleChat()"
-                      class="px-4 py-2 border border-qns-navy text-qns-navy rounded font-bold hover:bg-gray-50 text-sm"
+                      class="px-3 py-1.5 md:px-4 md:py-2 border border-qns-navy text-qns-navy rounded font-bold hover:bg-gray-50 text-xs md:text-sm whitespace-nowrap"
                       data-i18n="btn_consult"
                     >
                       Tư vấn
                     </button>
-                    <!-- Link tới tour-detail1.html (Tour 3) -->
                     <a
                       href="tour-detail1.html"
-                      class="px-4 py-2 bg-qns-navy text-white rounded font-bold hover:bg-qns-orange transition text-sm shadow-md flex items-center"
+                      class="px-3 py-1.5 md:px-4 md:py-2 bg-qns-navy text-white rounded font-bold hover:bg-qns-orange transition text-xs md:text-sm shadow-md flex items-center whitespace-nowrap"
                       data-i18n="btn_view"
                     >
-                      Xem Chi Tiết <i class="fas fa-arrow-right ml-2"></i>
+                      Xem Chi Tiết <i class="fas fa-arrow-right ml-1 md:ml-2"></i>
                     </a>
                   </div>
                 </div>
@@ -549,12 +540,12 @@
       </div>
     </section>
 
-    <!-- FOOTER (Đồng bộ với Index) -->
+    <!-- FOOTER -->
     <footer class="bg-qns-navy text-gray-400 py-12 border-t-4 border-qns-red">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Col 1 -->
-          <div>
+          <div class="col-span-1 lg:col-span-2">
             <div class="flex items-center gap-2 mb-4 text-white">
               <i class="fas fa-anchor text-3xl text-qns-orange"></i>
               <span class="text-2xl font-bold">QNSTravel</span>
@@ -564,7 +555,6 @@
               Ninh (QN Shipcorp). Đơn vị lữ hành quốc tế uy tín hàng đầu tại cửa
               khẩu Móng Cái.
             </p>
-
           </div>
 
           <!-- Col 2 -->
@@ -597,9 +587,6 @@
           </div>
 
           <!-- Col 3 -->
-          
-
-          <!-- Col 4 -->
           <div>
             <h3
               class="text-white font-bold text-lg mb-4 uppercase tracking-wide"
@@ -639,59 +626,14 @@
       </div>
     </footer>
 
-    <!-- MOBILE NAV -->
+    <!-- GEMINI AI CHAT WIDGET -->
+    <!-- Cập nhật class bottom để hạ widget chat xuống vì đã xóa Bottom Nav -->
     <div
-      class="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-top border-t z-50 flex justify-around py-2 text-xs text-gray-600"
-    >
-      <a
-        href="index.html"
-        class="flex flex-col items-center hover:text-qns-navy"
-      >
-        <i class="fas fa-home text-lg mb-1"></i>
-        <span data-i18n="home">Home</span>
-      </a>
-      <a
-        href="outbound-tours.html"
-        class="flex flex-col items-center text-qns-red"
-      >
-        <i class="fas fa-globe-asia text-lg mb-1"></i>
-        <span data-i18n="outbound_short">Tour TQ</span>
-      </a>
-      <a
-        href="tel:0904259591"
-        class="flex flex-col items-center text-white -mt-6"
-      >
-        <div class="bg-qns-red p-3 rounded-full shadow-lg">
-          <i class="fas fa-phone text-xl"></i>
-        </div>
-        <span class="text-qns-red font-bold mt-1" data-i18n="call_now"
-          >Gọi ngay</span
-        >
-      </a>
-      <a
-        href="https://zalo.me/0904259591"
-        class="flex flex-col items-center hover:text-qns-navy"
-      >
-        <i class="fas fa-comment-dots text-lg mb-1"></i>
-        <span>Chat</span>
-      </a>
-      <a
-        href="#mobile-menu"
-        onclick="document.getElementById('mobile-menu-btn').click()"
-        class="flex flex-col items-center hover:text-qns-navy"
-      >
-        <i class="fas fa-bars text-lg mb-1"></i>
-        <span>Menu</span>
-      </a>
-    </div>
-
-    <!-- GEMINI AI CHAT WIDGET (Reused) -->
-    <div
-      class="fixed bottom-20 md:bottom-6 right-4 z-50 flex flex-col items-end"
+      class="fixed bottom-6 right-4 z-50 flex flex-col items-end"
     >
       <div
         id="ai-chat-window"
-        class="hidden bg-white rounded-lg shadow-2xl w-80 md:w-96 overflow-hidden border border-gray-200 mb-4 chat-open flex flex-col h-[500px]"
+        class="hidden bg-white rounded-lg shadow-2xl w-80 md:w-96 overflow-hidden border border-gray-200 mb-4 flex flex-col h-[450px] md:h-[500px]"
       >
         <div
           class="bg-gradient-to-r from-qns-navy to-blue-900 p-4 flex justify-between items-center text-white"
@@ -749,12 +691,12 @@
       </div>
       <button
         onclick="toggleChat()"
-        class="bg-gradient-to-r from-qns-navy to-blue-800 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 border-2 border-white group relative"
+        class="bg-gradient-to-r from-qns-navy to-blue-800 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 border-2 border-white group relative"
       >
         <span
           class="absolute -top-1 -right-1 bg-red-500 w-3 h-3 rounded-full animate-ping"
         ></span>
-        <i class="fas fa-sparkles text-xl group-hover:rotate-12 transition"></i>
+        <i class="fas fa-sparkles text-lg md:text-xl group-hover:rotate-12 transition"></i>
       </button>
     </div>
 
@@ -796,7 +738,7 @@
           tag_sieuthi: "Siêu thị",
           price_from: "Giá từ",
           btn_consult: "Tư vấn",
-          btn_view: 'Xem Chi Tiết <i class="fas fa-arrow-right ml-2"></i>',
+          btn_view: 'Xem Chi Tiết <i class="fas fa-arrow-right ml-1 md:ml-2"></i>',
 
           tour2_title: "Đông Hưng - Nam Ninh - Thái Bình Cổ Trấn",
           duration_3d2n: '<i class="far fa-clock mr-1"></i> 3 Ngày 2 Đêm',
@@ -858,7 +800,7 @@
           tag_sieuthi: "超市",
           price_from: "价格起",
           btn_consult: "咨询",
-          btn_view: '查看详情 <i class="fas fa-arrow-right ml-2"></i>',
+          btn_view: '查看详情 <i class="fas fa-arrow-right ml-1 md:ml-2"></i>',
 
           tour2_title: "东兴 - 南宁 - 太平古镇",
           duration_3d2n: '<i class="far fa-clock mr-1"></i> 3 天 2 晚',
@@ -903,6 +845,21 @@
             el.innerHTML = translations[lang][key];
           }
         });
+        
+        // Update opacity for active lang flags
+        const vnFlag = document.querySelector('img[alt="VN"]');
+        const cnFlag = document.querySelector('img[alt="CN"]');
+        if (lang === 'vn') {
+          vnFlag.classList.remove('opacity-50');
+          vnFlag.classList.add('opacity-100');
+          cnFlag.classList.remove('opacity-100');
+          cnFlag.classList.add('opacity-50');
+        } else {
+          cnFlag.classList.remove('opacity-50');
+          cnFlag.classList.add('opacity-100');
+          vnFlag.classList.remove('opacity-100');
+          vnFlag.classList.add('opacity-50');
+        }
       }
 
       // Chat Logic
@@ -913,7 +870,12 @@
 
       function toggleChat() {
         chatWindow.classList.toggle("hidden");
-        if (!chatWindow.classList.contains("hidden")) userInput.focus();
+        if (!chatWindow.classList.contains("hidden")) {
+           chatWindow.classList.add("chat-open");
+           userInput.focus();
+        } else {
+           chatWindow.classList.remove("chat-open");
+        }
       }
 
       function handleKeyPress(event) {

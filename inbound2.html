@@ -86,7 +86,7 @@
     </script>
   </head>
   <body class="bg-gray-50 text-gray-800 relative">
-    <!-- HEADER (Đồng bộ) -->
+    <!-- HEADER -->
     <header class="bg-white shadow-md sticky top-0 z-50">
       <div class="bg-qns-navy text-white text-xs py-2 hidden md:block">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -115,10 +115,10 @@
               <i class="fas fa-anchor"></i>
             </div>
             <div>
-              <h1 class="text-2xl font-bold text-qns-navy leading-none">
+              <h1 class="text-xl md:text-2xl font-bold text-qns-navy leading-none">
                 QNSTravel
               </h1>
-              <p class="text-xs text-gray-500 tracking-wider">
+              <p class="text-[10px] md:text-xs text-gray-500 tracking-wider">
                 MEMBER OF QN SHIPCORP
               </p>
             </div>
@@ -161,32 +161,37 @@
               >Liên hệ</a
             >
           </nav>
-          <div class="hidden md:flex items-center space-x-4">
+
+          <!-- Nhóm nút bên phải: Cờ ngôn ngữ (Luôn hiện) + Nút gọi (Hiện trên desktop) + Hamburger Menu -->
+          <div class="flex items-center space-x-3 md:space-x-4">
+            <!-- Bộ chuyển ngôn ngữ: Luôn hiển thị trên cả mobile -->
             <div class="flex items-center border rounded px-2 py-1 space-x-2">
               <img
                 src="https://flagcdn.com/w20/vn.png"
                 alt="VN"
-                class="cursor-pointer opacity-100 hover:opacity-80"
+                class="cursor-pointer opacity-100 hover:opacity-80 w-5 h-auto"
                 onclick="switchLanguage('vn')"
               />
               <span class="text-gray-300">|</span>
               <img
                 src="https://flagcdn.com/w20/cn.png"
                 alt="CN"
-                class="cursor-pointer opacity-50 hover:opacity-100"
+                class="cursor-pointer opacity-50 hover:opacity-100 w-5 h-auto"
                 onclick="switchLanguage('cn')"
               />
             </div>
+            
             <a
               href="tel:0904259591"
-              class="bg-qns-red text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg animate-pulse"
+              class="hidden md:flex bg-qns-red text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg animate-pulse items-center"
             >
               <i class="fas fa-phone-alt mr-2"></i> 0904.259.591
             </a>
+            
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-qns-navy focus:outline-none">
+              <i class="fas fa-bars"></i>
+            </button>
           </div>
-          <button id="mobile-menu-btn" class="lg:hidden text-2xl text-qns-navy">
-            <i class="fas fa-bars"></i>
-          </button>
         </div>
       </div>
       <!-- Mobile Menu -->
@@ -194,7 +199,7 @@
         id="mobile-menu"
         class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg"
       >
-        <div class="flex flex-col p-4 space-y-3 font-medium">
+        <div class="flex flex-col p-4 space-y-3 font-medium text-sm">
           <a href="index.html" data-i18n="home">Trang chủ</a>
           <a href="outbound-tours.html" data-i18n="outbound_menu"
             >Du lịch Trung Quốc</a
@@ -207,39 +212,25 @@
           >
           <a href="visa-services.html" data-i18n="visa_menu">Dịch vụ Visa</a>
           <a href="contact.html" data-i18n="contact_menu">Liên hệ</a>
-          <div class="border-t pt-3 flex items-center justify-between">
-            <span data-i18n="language">Ngôn ngữ:</span>
-            <div class="flex space-x-3">
-              <img
-                src="https://flagcdn.com/w20/vn.png"
-                alt="VN"
-                onclick="switchLanguage('vn')"
-              />
-              <img
-                src="https://flagcdn.com/w20/cn.png"
-                alt="CN"
-                onclick="switchLanguage('cn')"
-              />
-            </div>
-          </div>
+          <!-- Đã bỏ phần chọn ngôn ngữ ở đây vì đã đưa lên top bar -->
         </div>
       </div>
     </header>
 
     <!-- BREADCRUMB -->
     <div class="bg-gray-100 py-3 border-b">
-      <div class="container mx-auto px-4 text-sm text-gray-500">
+      <div class="container mx-auto px-4 text-xs md:text-sm text-gray-500 overflow-x-auto whitespace-nowrap hide-scrollbar">
         <a href="index.html" class="hover:text-qns-navy" data-i18n="home"
           >Trang chủ</a
         >
-        <i class="fas fa-chevron-right mx-2 text-xs"></i>
+        <i class="fas fa-chevron-right mx-1 md:mx-2 text-[10px] md:text-xs"></i>
         <a
           href="inbound-tours.html"
           class="hover:text-qns-navy"
           data-i18n="inbound_menu"
           >Du lịch Việt Nam</a
         >
-        <i class="fas fa-chevron-right mx-2 text-xs"></i>
+        <i class="fas fa-chevron-right mx-1 md:mx-2 text-[10px] md:text-xs"></i>
         <span class="text-qns-red font-medium" data-i18n="tour_title"
           >Nha Trang - VinWonders - Đảo Khỉ (4N3Đ)</span
         >
@@ -247,14 +238,14 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <main class="py-8">
+    <main class="py-6 md:py-8">
       <div class="container mx-auto px-4">
         <!-- TOP SECTION: IMAGES & INFO -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
           <!-- Gallery -->
           <div>
             <div
-              class="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg mb-4 group"
+              class="relative h-[250px] md:h-[400px] rounded-lg overflow-hidden shadow-lg mb-3 md:mb-4 group"
             >
               <!-- Main Image -->
               <img
@@ -264,7 +255,7 @@
                 class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
               />
               <div
-                class="absolute top-4 left-4 bg-qns-red text-white text-xs font-bold px-3 py-1 rounded"
+                class="absolute top-3 md:top-4 left-3 md:left-4 bg-qns-red text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1 rounded"
               >
                 B2B - GIÁ NET
               </div>
@@ -272,22 +263,22 @@
             <div class="grid grid-cols-4 gap-2">
               <img
                 src="inbound/thapba.png"
-                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                class="h-16 md:h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
                 onclick="changeImage(this.src)"
               />
               <img
                 src="inbound/daokhi.webp"
-                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                class="h-16 md:h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
                 onclick="changeImage(this.src)"
               />
               <img
                 src="inbound/tambun.jpg"
-                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                class="h-16 md:h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
                 onclick="changeImage(this.src)"
               />
               <img
                 src="nhatrang.jpg"
-                class="h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
+                class="h-16 md:h-20 w-full object-cover rounded cursor-pointer hover:opacity-80 border-2 border-transparent hover:border-qns-navy"
                 onclick="changeImage(this.src)"
               />
             </div>
@@ -296,25 +287,25 @@
           <!-- Info -->
           <div class="flex flex-col justify-between">
             <div>
-              <div class="flex items-center gap-2 mb-2">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
                 <span
-                  class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded"
+                  class="bg-blue-100 text-blue-800 text-[10px] md:text-xs font-bold px-2 py-1 rounded"
                   >Mã tour: QNS-IN-02</span
                 >
                 <span
-                  class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded"
+                  class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-1 rounded"
                   ><i class="fas fa-check-circle mr-1"></i>Nhập cảnh Cam
                   Ranh</span
                 >
               </div>
               <h1
-                class="text-3xl font-bold text-qns-navy mb-2"
+                class="text-2xl md:text-3xl font-bold text-qns-navy mb-2 leading-tight"
                 data-i18n="tour_heading"
               >
                 Nha Trang - VinWonders - Đảo Khỉ (4N3Đ)
               </h1>
               <div
-                class="flex items-center text-sm text-gray-500 mb-4 space-x-4"
+                class="flex flex-wrap items-center text-xs md:text-sm text-gray-500 mb-4 gap-3 md:space-x-4 md:gap-0"
               >
                 <span data-i18n="duration_4d3n"
                   ><i class="far fa-clock text-qns-orange mr-1"></i> 4 Ngày 3
@@ -327,42 +318,42 @@
               </div>
 
               <div
-                class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6"
+                class="bg-gray-50 p-3 md:p-4 rounded-lg border border-gray-200 mb-5 md:mb-6"
               >
                 <p
-                  class="text-gray-700 mb-2 font-medium"
+                  class="text-gray-700 mb-2 font-medium text-sm md:text-base"
                   data-i18n="highlights_title"
                 >
                   Điểm nhấn hành trình:
                 </p>
-                <ul class="space-y-1 text-sm text-gray-600">
+                <ul class="space-y-1.5 text-xs md:text-sm text-gray-600">
                   <li>
-                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    <i class="fas fa-star text-yellow-400 mr-1 md:mr-2"></i
                     ><span data-i18n="hl_1"
                       >Vui chơi không giới hạn tại VinWonders (bao gồm cáp
                       treo/tàu cao tốc).</span
                     >
                   </li>
                   <li>
-                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    <i class="fas fa-star text-yellow-400 mr-1 md:mr-2"></i
                     ><span data-i18n="hl_2"
                       >Tham quan Đảo Khỉ, xem xiếc thú vui nhộn.</span
                     >
                   </li>
                   <li>
-                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    <i class="fas fa-star text-yellow-400 mr-1 md:mr-2"></i
                     ><span data-i18n="hl_3"
                       >Tặng vé Tắm bùn khoáng nóng I-Resort cao cấp.</span
                     >
                   </li>
                   <li>
-                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    <i class="fas fa-star text-yellow-400 mr-1 md:mr-2"></i
                     ><span data-i18n="hl_4"
                       >Thưởng thức hải sản tươi sống và món Quảng Đông.</span
                     >
                   </li>
                   <li>
-                    <i class="fas fa-star text-yellow-400 mr-2"></i
+                    <i class="fas fa-star text-yellow-400 mr-1 md:mr-2"></i
                     ><span data-i18n="hl_5"
                       >Khách sạn 4-5 sao mặt biển Trần Phú.</span
                     >
@@ -370,32 +361,31 @@
                 </ul>
               </div>
 
-              <div class="flex items-end gap-2 mb-6">
-                <span class="text-xs text-gray-500 mb-2" data-i18n="price_ref"
+              <div class="flex items-end gap-1.5 md:gap-2 mb-6 flex-wrap">
+                <span class="text-[10px] md:text-xs text-gray-500 mb-1.5 md:mb-2 w-full sm:w-auto" data-i18n="price_ref"
                   >Giá NET tham khảo:</span
                 >
-                <span class="text-4xl font-bold text-qns-red">$305</span>
-                <span class="text-sm text-gray-500 mb-2"
+                <span class="text-3xl md:text-4xl font-bold text-qns-red">$305</span>
+                <span class="text-xs md:text-sm text-gray-500 mb-1.5 md:mb-2"
                   >/ <span data-i18n="pax">khách</span></span
                 >
               </div>
             </div>
 
-            <div class="flex gap-4">
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
               <button
                 onclick="
                   document
-                    .getElementById('booking-form')
-                    .scrollIntoView({ behavior: 'smooth' })
+                    .getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' })
                 "
-                class="flex-1 bg-qns-navy text-white py-3 rounded-lg font-bold hover:bg-qns-orange transition shadow-lg flex items-center justify-center"
+                class="w-full sm:flex-1 bg-qns-navy text-white py-2.5 md:py-3 rounded-lg font-bold hover:bg-qns-orange transition shadow-lg flex items-center justify-center text-sm md:text-base"
               >
                 <i class="fas fa-handshake mr-2"></i>
                 <span data-i18n="btn_cooperate">LIÊN HỆ HỢP TÁC</span>
               </button>
               <a
                 href="https://zalo.me/0904259591"
-                class="flex-1 border-2 border-qns-navy text-qns-navy py-3 rounded-lg font-bold hover:bg-qns-navy hover:text-white transition flex items-center justify-center"
+                class="w-full sm:flex-1 border-2 border-qns-navy text-qns-navy py-2.5 md:py-3 rounded-lg font-bold hover:bg-qns-navy hover:text-white transition flex items-center justify-center text-sm md:text-base"
               >
                 <i class="fas fa-comment-dots mr-2"></i>
                 <span data-i18n="btn_chat">CHAT TƯ VẤN</span>
@@ -414,21 +404,21 @@
             >
               <button
                 onclick="openTab(event, 'schedule')"
-                class="tab-btn px-6 py-3 font-bold text-qns-red border-b-2 border-qns-red focus:outline-none whitespace-nowrap"
+                class="tab-btn px-4 py-2 md:px-6 md:py-3 text-sm md:text-base font-bold text-qns-red border-b-2 border-qns-red focus:outline-none whitespace-nowrap"
                 data-i18n="tab_schedule"
               >
                 Lịch Trình Chi Tiết
               </button>
               <button
                 onclick="openTab(event, 'price')"
-                class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-qns-navy focus:outline-none whitespace-nowrap"
+                class="tab-btn px-4 py-2 md:px-6 md:py-3 text-sm md:text-base font-medium text-gray-500 hover:text-qns-navy focus:outline-none whitespace-nowrap"
                 data-i18n="tab_price"
               >
                 Giá & Dịch Vụ
               </button>
               <button
                 onclick="openTab(event, 'policy')"
-                class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-qns-navy focus:outline-none whitespace-nowrap"
+                class="tab-btn px-4 py-2 md:px-6 md:py-3 text-sm md:text-base font-medium text-gray-500 hover:text-qns-navy focus:outline-none whitespace-nowrap"
                 data-i18n="tab_policy"
               >
                 Chính Sách B2B
@@ -438,19 +428,19 @@
             <!-- TAB 1: SCHEDULE -->
             <div id="schedule" class="tab-content block animate-fade-in">
               <div
-                class="relative border-l-2 border-gray-200 ml-3 space-y-10 pb-8"
+                class="relative border-l-2 border-gray-200 ml-3 space-y-8 md:space-y-10 pb-6 md:pb-8"
               >
                 <!-- Day 1 -->
-                <div class="relative pl-8">
+                <div class="relative pl-6 md:pl-8">
                   <div class="timeline-point"></div>
                   <h3
-                    class="font-bold text-xl text-qns-navy mb-2"
+                    class="font-bold text-lg md:text-xl text-qns-navy mb-2"
                     data-i18n="day1_title"
                   >
                     NGÀY 01: ĐÓN SÂN BAY CAM RANH - CITY TOUR (Ăn Trưa, Tối)
                   </h3>
                   <div
-                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                    class="bg-white p-4 md:p-5 rounded-lg border border-gray-100 shadow-sm space-y-2.5 md:space-y-3 text-gray-600 text-xs md:text-sm leading-relaxed"
                   >
                     <p>
                       <span data-i18n="day1_p1"
@@ -476,16 +466,16 @@
                 </div>
 
                 <!-- Day 2 -->
-                <div class="relative pl-8">
+                <div class="relative pl-6 md:pl-8">
                   <div class="timeline-point"></div>
                   <h3
-                    class="font-bold text-xl text-qns-navy mb-2"
+                    class="font-bold text-lg md:text-xl text-qns-navy mb-2"
                     data-i18n="day2_title"
                   >
                     NGÀY 02: VỊNH NHA TRANG - VINWONDERS (Ăn Sáng, Trưa, Tối)
                   </h3>
                   <div
-                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                    class="bg-white p-4 md:p-5 rounded-lg border border-gray-100 shadow-sm space-y-2.5 md:space-y-3 text-gray-600 text-xs md:text-sm leading-relaxed"
                   >
                     <p>
                       <span data-i18n="day2_p1"
@@ -516,16 +506,16 @@
                 </div>
 
                 <!-- Day 3 -->
-                <div class="relative pl-8">
+                <div class="relative pl-6 md:pl-8">
                   <div class="timeline-point"></div>
                   <h3
-                    class="font-bold text-xl text-qns-navy mb-2"
+                    class="font-bold text-lg md:text-xl text-qns-navy mb-2"
                     data-i18n="day3_title"
                   >
                     NGÀY 03: ĐẢO KHỈ - TẮM BÙN KHOÁNG (Ăn Sáng, Trưa, Tối)
                   </h3>
                   <div
-                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                    class="bg-white p-4 md:p-5 rounded-lg border border-gray-100 shadow-sm space-y-2.5 md:space-y-3 text-gray-600 text-xs md:text-sm leading-relaxed"
                   >
                     <p>
                       <span data-i18n="day3_p1"
@@ -555,16 +545,16 @@
                 </div>
 
                 <!-- Day 4 -->
-                <div class="relative pl-8">
+                <div class="relative pl-6 md:pl-8">
                   <div class="timeline-point"></div>
                   <h3
-                    class="font-bold text-xl text-qns-navy mb-2"
+                    class="font-bold text-lg md:text-xl text-qns-navy mb-2"
                     data-i18n="day4_title"
                   >
                     NGÀY 04: NHA TRANG - TIỄN SÂN BAY (Ăn Sáng)
                   </h3>
                   <div
-                    class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm space-y-3 text-gray-600 text-sm leading-relaxed"
+                    class="bg-white p-4 md:p-5 rounded-lg border border-gray-100 shadow-sm space-y-2.5 md:space-y-3 text-gray-600 text-xs md:text-sm leading-relaxed"
                   >
                     <p>
                       <span data-i18n="day4_p1"
@@ -585,24 +575,24 @@
 
             <!-- TAB 2: PRICE & SERVICE -->
             <div id="price" class="tab-content hidden animate-fade-in">
-              <div class="bg-blue-50 border border-blue-200 rounded p-4 mb-6">
+              <div class="bg-blue-50 border border-blue-200 rounded p-3 md:p-4 mb-6">
                 <h4
-                  class="font-bold text-qns-navy mb-2"
+                  class="font-bold text-qns-navy mb-2 text-sm md:text-base"
                   data-i18n="price_table_title"
                 >
                   Bảng Giá NET (Dành cho đại lý)
                 </h4>
-                <div class="flex items-baseline gap-2">
-                  <span class="text-3xl font-bold text-qns-red"
+                <div class="flex flex-wrap items-baseline gap-1 md:gap-2">
+                  <span class="text-2xl md:text-3xl font-bold text-qns-red"
                     >$305 | 2196 CNY</span
                   >
                   <span
-                    class="text-sm text-gray-600"
+                    class="text-xs md:text-sm text-gray-600"
                     data-i18n="price_condition"
                     >/ khách</span
                   >
                 </div>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="price_note">
+                <p class="text-[10px] md:text-xs text-gray-500 mt-1" data-i18n="price_note">
                   *Thanh toán linh hoạt: USD/CNY/VND. Tỷ giá theo thời điểm
                   thanh toán.
                 </p>
@@ -612,15 +602,15 @@
                 <!-- Bao gồm -->
                 <div>
                   <h4
-                    class="font-bold text-green-700 mb-3 border-b border-green-200 pb-2"
+                    class="font-bold text-green-700 mb-2 md:mb-3 border-b border-green-200 pb-2 text-sm md:text-base"
                   >
-                    <i class="fas fa-check-circle mr-2"></i
+                    <i class="fas fa-check-circle mr-1 md:mr-2"></i
                     ><span data-i18n="inc_title">GIÁ BAO GỒM (NET)</span>
                   </h4>
-                  <ul class="space-y-2 text-sm text-gray-700">
+                  <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-700">
                     <li class="flex items-start">
                       <i
-                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-[10px] md:text-xs"
                       ></i
                       ><span data-i18n="inc_1"
                         >Xe đưa đón máy lạnh đời mới.</span
@@ -628,7 +618,7 @@
                     </li>
                     <li class="flex items-start">
                       <i
-                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-[10px] md:text-xs"
                       ></i
                       ><span data-i18n="inc_2"
                         >Khách sạn 4-5 sao mặt biển (2 người/phòng).</span
@@ -636,7 +626,7 @@
                     </li>
                     <li class="flex items-start">
                       <i
-                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-[10px] md:text-xs"
                       ></i
                       ><span data-i18n="inc_3"
                         >Vé VinWonders trọn gói (Cáp treo + Vui chơi).</span
@@ -644,7 +634,7 @@
                     </li>
                     <li class="flex items-start">
                       <i
-                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-[10px] md:text-xs"
                       ></i
                       ><span data-i18n="inc_4"
                         >Vé tham quan Đảo Khỉ, Tháp Bà Ponagar.</span
@@ -652,7 +642,7 @@
                     </li>
                     <li class="flex items-start">
                       <i
-                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-[10px] md:text-xs"
                       ></i
                       ><span data-i18n="inc_5"
                         >Ăn uống: Hải sản + Món Quảng Đông.</span
@@ -660,7 +650,7 @@
                     </li>
                     <li class="flex items-start">
                       <i
-                        class="fas fa-check text-green-500 mt-1 mr-2 text-xs"
+                        class="fas fa-check text-green-500 mt-1 mr-2 text-[10px] md:text-xs"
                       ></i
                       ><span data-i18n="inc_6"
                         >Vé Tắm bùn khoáng nóng I-Resort.</span
@@ -672,30 +662,30 @@
                 <!-- Không bao gồm -->
                 <div>
                   <h4
-                    class="font-bold text-red-700 mb-3 border-b border-red-200 pb-2"
+                    class="font-bold text-red-700 mb-2 md:mb-3 border-b border-red-200 pb-2 text-sm md:text-base"
                   >
-                    <i class="fas fa-times-circle mr-2"></i
+                    <i class="fas fa-times-circle mr-1 md:mr-2"></i
                     ><span data-i18n="exc_title">KHÔNG BAO GỒM</span>
                   </h4>
-                  <ul class="space-y-2 text-sm text-gray-700">
+                  <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-700">
                     <li class="flex items-start">
-                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-[10px] md:text-xs"></i
                       ><span data-i18n="exc_1"
                         >Vé máy bay khứ hồi (Trừ khi Charter).</span
                       >
                     </li>
                     <li class="flex items-start">
-                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-[10px] md:text-xs"></i
                       ><span data-i18n="exc_2">Thuế VAT.</span>
                     </li>
                     <li class="flex items-start">
-                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-[10px] md:text-xs"></i
                       ><span data-i18n="exc_3"
                         >Chi phí cá nhân & Phụ thu phòng đơn.</span
                       >
                     </li>
                     <li class="flex items-start">
-                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-xs"></i
+                      <i class="fas fa-times text-red-400 mt-1 mr-2 text-[10px] md:text-xs"></i
                       ><span data-i18n="exc_4"
                         >Tiền Tip cho HDV và Lái xe (Bắt buộc).</span
                       >
@@ -708,7 +698,7 @@
             <!-- TAB 3: POLICY -->
             <div
               id="policy"
-              class="tab-content hidden animate-fade-in text-sm text-gray-700 space-y-6"
+              class="tab-content hidden animate-fade-in text-xs md:text-sm text-gray-700 space-y-5 md:space-y-6"
             >
               <div>
                 <h4
@@ -740,7 +730,7 @@
                 >
                   Lưu Ý Đối Tác
                 </h4>
-                <div class="bg-yellow-50 p-4 border border-yellow-200 rounded">
+                <div class="bg-yellow-50 p-3 md:p-4 border border-yellow-200 rounded">
                   <ul class="list-decimal ml-5 space-y-1">
                     <li>
                       <span data-i18n="note_1"
@@ -759,87 +749,31 @@
             </div>
           </div>
 
-          <!-- Right Sidebar: Booking Form (Sticky) -->
+          <!-- Right Sidebar: Consultant Info (Sticky) -->
           <div class="w-full lg:w-1/3">
             <div class="lg:sticky lg:top-24 space-y-6">
-              <!-- Form -->
-              <!-- <div
-                id="booking-form"
-                class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-qns-orange"
-              >
-                <h3
-                  class="font-bold text-xl text-center mb-4"
-                  data-i18n="form_title"
-                >
-                  Liên Hệ Hợp Tác
-                </h3>
-                <form>
-                  <div class="mb-3">
-                    <label
-                      class="block text-xs font-bold text-gray-500 mb-1"
-                      data-i18n="form_name"
-                      >Tên đơn vị / Người liên hệ</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:border-qns-navy"
-                      placeholder="..."
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label
-                      class="block text-xs font-bold text-gray-500 mb-1"
-                      data-i18n="form_contact"
-                      >SĐT / WeChat / Email</label
-                    >
-                    <input
-                      type="text"
-                      class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:border-qns-navy"
-                      placeholder="..."
-                    />
-                  </div>
-                  <div class="mb-4">
-                    <label
-                      class="block text-xs font-bold text-gray-500 mb-1"
-                      data-i18n="form_content"
-                      >Nội dung cần hỗ trợ</label
-                    >
-                    <textarea
-                      class="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:border-qns-navy h-24"
-                    ></textarea>
-                  </div>
-                  <button
-                    type="button"
-                    class="w-full bg-qns-navy text-white py-3 rounded font-bold hover:bg-qns-orange transition mb-3"
-                    data-i18n="form_submit"
-                  >
-                    GỬI YÊU CẦU
-                  </button>
-                </form>
-              </div> -->
-
               <!-- Consultant Info -->
               <div
-                class="bg-blue-600 text-white p-6 rounded-lg shadow-md flex items-center gap-4"
+                class="bg-blue-600 text-white p-5 md:p-6 rounded-lg shadow-md flex items-center gap-4"
               >
                 <div
-                  class="w-14 h-14 rounded-full bg-white text-blue-600 flex items-center justify-center text-2xl font-bold"
+                  class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white text-blue-600 flex items-center justify-center text-xl md:text-2xl font-bold flex-shrink-0"
                 >
                   <i class="fas fa-user-tie"></i>
                 </div>
                 <div>
                   <p
-                    class="text-sm opacity-90"
+                    class="text-xs md:text-sm opacity-90"
                     data-i18n="contact_person_title"
                   >
                     Giám đốc điều hành
                   </p>
                   <a
                     href="tel:0904259591"
-                    class="text-2xl font-bold hover:text-qns-gold transition"
+                    class="text-xl md:text-2xl font-bold hover:text-qns-gold transition leading-tight block mb-1"
                     >Mr. Hạnh</a
                   >
-                  <p class="text-xs opacity-80">
+                  <p class="text-[10px] md:text-xs opacity-80 break-words">
                     WeChat: hanhcutb | Zalo: 0904.259.591
                   </p>
                 </div>
@@ -849,38 +783,38 @@
         </div>
 
         <!-- RELATED TOURS -->
-        <div class="mt-16 pt-10 border-t border-gray-200">
+        <div class="mt-12 md:mt-16 pt-8 md:pt-10 border-t border-gray-200">
           <h2
-            class="text-2xl font-bold text-qns-navy mb-6"
+            class="text-xl md:text-2xl font-bold text-qns-navy mb-4 md:mb-6"
             data-i18n="related_tours"
           >
             Các Tour Inbound Khác
           </h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             <!-- Related 1 -->
             <a href="inbound1.html"
               class="bg-white rounded-lg shadow border border-gray-100 overflow-hidden hover:shadow-lg transition group"
             >
-              <div class="relative h-48 overflow-hidden">
+              <div class="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="hlb.jpg"
                   class="w-full h-full object-cover transition duration-300 group-hover:scale-110"
                 />
               </div>
-              <div class="p-4">
+              <div class="p-3 md:p-4">
                 <h3
-                  class="font-bold text-lg mb-1 truncate"
+                  class="font-bold text-base md:text-lg mb-1 truncate"
                   data-i18n="rel_1_title"
                 >
                   Hạ Long - Hà Nội (4N3Đ)
                 </h3>
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center mt-2">
                   <span
-                    class="text-xs bg-gray-100 px-2 py-1 rounded"
+                    class="text-[10px] md:text-xs bg-gray-100 px-2 py-1 rounded"
                     data-i18n="loc_north"
                     >Miền Bắc</span
                   >
-                  <span class="font-bold text-qns-red">$285</span>
+                  <span class="font-bold text-qns-red text-sm md:text-base">$285</span>
                 </div>
               </div>
             </a>
@@ -888,27 +822,27 @@
             <a href="inbound3.html"
               class="bg-white rounded-lg shadow border border-gray-100 overflow-hidden hover:shadow-lg transition group"
             >
-              <div class="relative h-48 overflow-hidden">
+              <div class="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="hoian.jpg"
                   class="w-full h-full object-cover transition duration-300 group-hover:scale-110"
                 />
               </div>
-              <div class="p-4">
+              <div class="p-3 md:p-4">
                 <h3
-                  class="font-bold text-lg mb-1 truncate"
+                  class="font-bold text-base md:text-lg mb-1 truncate"
                   data-i18n="rel_3_title"
                 >
                   Đà Nẵng - Hội An - Huế (5N4Đ)
                 </h3>
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center mt-2">
                   <span
-                    class="text-xs bg-gray-100 px-2 py-1 rounded"
+                    class="text-[10px] md:text-xs bg-gray-100 px-2 py-1 rounded"
                     data-i18n="loc_central"
                     >Miền Trung</span
                   >
                   <span
-                    class="font-bold text-qns-navy text-sm"
+                    class="font-bold text-qns-navy text-xs md:text-sm"
                     data-i18n="price_contact"
                     >Liên hệ</span
                   >
@@ -920,12 +854,12 @@
       </div>
     </main>
 
-    <!-- FOOTER (Đồng bộ) -->
+    <!-- FOOTER -->
     <footer class="bg-qns-navy text-gray-400 py-12 border-t-4 border-qns-red">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Col 1 -->
-          <div>
+          <div class="col-span-1 lg:col-span-2">
             <div class="flex items-center gap-2 mb-4 text-white">
               <i class="fas fa-anchor text-3xl text-qns-orange"></i>
               <span class="text-2xl font-bold">QNSTravel</span>
@@ -935,7 +869,6 @@
               Ninh (QN Shipcorp). Đơn vị lữ hành quốc tế uy tín hàng đầu tại cửa
               khẩu Móng Cái.
             </p>
-
           </div>
 
           <!-- Col 2 -->
@@ -968,9 +901,6 @@
           </div>
 
           <!-- Col 3 -->
-          
-
-          <!-- Col 4 -->
           <div>
             <h3
               class="text-white font-bold text-lg mb-4 uppercase tracking-wide"
@@ -1010,51 +940,14 @@
       </div>
     </footer>
 
-    <!-- MOBILE NAV -->
-    <div
-      class="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-top border-t z-50 flex justify-around py-2 text-xs text-gray-600"
-    >
-      <a
-        href="index.html"
-        class="flex flex-col items-center hover:text-qns-navy"
-      >
-        <i class="fas fa-home text-lg mb-1"></i
-        ><span data-i18n="home">Home</span>
-      </a>
-      <a
-        href="inbound-tours.html"
-        class="flex flex-col items-center text-qns-red"
-      >
-        <i class="fas fa-globe-asia text-lg mb-1"></i
-        ><span data-i18n="inbound_menu">Inbound</span>
-      </a>
-      <a
-        href="tel:0904259591"
-        class="flex flex-col items-center text-white -mt-6"
-      >
-        <div class="bg-qns-red p-3 rounded-full shadow-lg">
-          <i class="fas fa-phone text-xl"></i>
-        </div>
-        <span class="text-qns-red font-bold mt-1" data-i18n="call_now"
-          >Gọi ngay</span
-        >
-      </a>
-      <a
-        href="#mobile-menu"
-        onclick="document.getElementById('mobile-menu-btn').click()"
-        class="flex flex-col items-center hover:text-qns-navy"
-      >
-        <i class="fas fa-bars text-lg mb-1"></i><span>Menu</span>
-      </a>
-    </div>
-
     <!-- GEMINI AI CHAT WIDGET -->
+    <!-- Đã hạ margin bottom xuống vì bỏ Bottom Nav -->
     <div
-      class="fixed bottom-20 md:bottom-6 right-4 z-50 flex flex-col items-end"
+      class="fixed bottom-6 right-4 z-50 flex flex-col items-end"
     >
       <div
         id="ai-chat-window"
-        class="hidden bg-white rounded-lg shadow-2xl w-80 md:w-96 overflow-hidden border border-gray-200 mb-4 chat-open flex flex-col h-[500px]"
+        class="hidden bg-white rounded-lg shadow-2xl w-80 md:w-96 overflow-hidden border border-gray-200 mb-4 flex flex-col h-[450px] md:h-[500px]"
       >
         <div
           class="bg-gradient-to-r from-qns-navy to-blue-900 p-4 flex justify-between items-center text-white"
@@ -1112,12 +1005,12 @@
       </div>
       <button
         onclick="toggleChat()"
-        class="bg-gradient-to-r from-qns-navy to-blue-800 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 border-2 border-white group relative"
+        class="bg-gradient-to-r from-qns-navy to-blue-800 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 border-2 border-white group relative"
       >
         <span
           class="absolute -top-1 -right-1 bg-red-500 w-3 h-3 rounded-full animate-ping"
         ></span>
-        <i class="fas fa-sparkles text-xl group-hover:rotate-12 transition"></i>
+        <i class="fas fa-sparkles text-lg md:text-xl group-hover:rotate-12 transition"></i>
       </button>
     </div>
 
@@ -1392,6 +1285,21 @@
             el.innerHTML = translations[lang][key];
           }
         });
+        
+        // Update opacity for active lang flags
+        const vnFlag = document.querySelector('img[alt="VN"]');
+        const cnFlag = document.querySelector('img[alt="CN"]');
+        if (lang === 'vn') {
+          vnFlag.classList.remove('opacity-50');
+          vnFlag.classList.add('opacity-100');
+          cnFlag.classList.remove('opacity-100');
+          cnFlag.classList.add('opacity-50');
+        } else {
+          cnFlag.classList.remove('opacity-50');
+          cnFlag.classList.add('opacity-100');
+          vnFlag.classList.remove('opacity-100');
+          vnFlag.classList.add('opacity-50');
+        }
       }
 
       // Chat Logic
@@ -1402,7 +1310,12 @@
 
       function toggleChat() {
         chatWindow.classList.toggle("hidden");
-        if (!chatWindow.classList.contains("hidden")) userInput.focus();
+        if (!chatWindow.classList.contains("hidden")) {
+           chatWindow.classList.add("chat-open");
+           userInput.focus();
+        } else {
+           chatWindow.classList.remove("chat-open");
+        }
       }
 
       function handleKeyPress(event) {
